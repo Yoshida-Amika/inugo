@@ -12,16 +12,17 @@
 
 
 ### ターゲットユーザ
-・犬と一緒にお出かけたい人たち
-・犬と旅行に行きたい人たち
+
+- 犬と一緒にお出かけしたい人たち
+- 犬と旅行に行きたい人たち
 ​
 ### 主な利用シーン
-・犬とお出かけする前の事前計画
-・犬との旅行計画
-・その場でカフェやドッグランの場所を調べるとき
+- 犬とお出かけする前の事前計画する時
+- 犬との旅行を控えている時
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- 実装機能リスト
+https://docs.google.com/spreadsheets/d/1HtafyctCHzO-Q8ctoNMRtl2ZO6mvbKYsInmKnNN4m-E/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -31,10 +32,4 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-- 
-
-## 実装機能リストURL
-https://docs.google.com/spreadsheets/d/1HtafyctCHzO-Q8ctoNMRtl2ZO6mvbKYsInmKnNN4m-E/edit?usp=sharing
+- 使用検討中です
