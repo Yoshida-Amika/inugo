@@ -1,18 +1,54 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
+
+  root to: 'user/homes#top'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'homes#top'
-  
+
+
   # ユーザー側
-  evise_for :users, skip: [:passwords], controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
-}
+ devise_for :users, skip: [:passwords], controllers: {
+   registrations: "user/registrations",
+   sessions: 'user/sessions'
+ }
 
 # 管理者側
-devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
+
+scope module: :user do
+
+  resources :shops
+
+  get 'user/my_page' => 'users#show'
+  get 'user/confirmation' => 'users#confirmation'
+  resources :customers, only: [:edit, :updeta]
+
+  resources :nices
+  resources :follows
+
+  resources :inquirys
+  get 'user/thanks' => 'users#thanks'
+
+  resources :registrations
+  resources :sessions
+
+end
+
+namespace :admin do
+
+  get '' => 'homes#top'
+  resources :sessions
+  resources :shops
+  resources :users
+  resources :inquirys
+
+end
+
+
+
+
+
+
 
 end
