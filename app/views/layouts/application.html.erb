@@ -6,11 +6,81 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if user_signed_in? %>
+
+      <nav class="navbar navbar-light bg-light">
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "宿泊施設", shops_path %>
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ショッピングモール", shops_path %>
+        </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "アクティビティ", shops_path %>
+       </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "マイページ", user_my_page_path %>
+       </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+       </button>
+
+      <% elsif admin_signed_in? %>
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "宿泊施設", shops_path %>
+      </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ショッピングモール", shops_path %>
+      </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "アクティビティ", shops_path %>
+       </button>
+
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "会員一覧", admin_users_path %>
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "お店一覧", admin_path %>
+        </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+       </button>
+
+    <% else %>
+
+      <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "宿泊施設", shops_path %>
+      </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ショッピングモール", shops_path %>
+      </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "アクティビティ", shops_path %>
+       </button>
+
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "新規登録", new_user_registration_path %>
+        </button>
+
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ログイン", new_user_session_path %>
+       </button>
+    <% end %>
     <%= yield %>
   </body>
 </html>
