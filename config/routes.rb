@@ -18,10 +18,13 @@ Rails.application.routes.draw do
 
 scope module: :user do
 
-  resources :shops
+  get 'shops/accommodation' => 'shops#index'
+  get 'shops/shopping_mall' => 'shops#shopping_mall'
+  get 'shops/activity' => 'shops#activity'
+  resources :shops, only: [:show]
 
-  get 'user/my_page' => 'users#show'
-  get 'user/confirmation' => 'users#confirmation'
+  get 'user/my_page' => 'customers#show'
+  get 'user/confirmation' => 'customers#confirmation'
   resources :customers, only: [:edit, :updeta]
 
   resources :nices
@@ -39,6 +42,10 @@ namespace :admin do
 
   get '' => 'homes#top'
   resources :sessions
+
+  get 'shops/accommodation' => 'shops#accommodation'
+  get 'shops/shopping_mall' => 'shops#shopping_mall'
+  get 'shops/activity' => 'shops#activity'
   resources :shops
   resources :users
   resources :inquirys
