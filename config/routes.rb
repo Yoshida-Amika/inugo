@@ -41,7 +41,7 @@ end
 namespace :admin do
 
   get '' => 'homes#top'
-  resources :sessions
+
 
   get 'shops/accommodation' => 'shops#accommodation'
   get 'shops/shopping_mall' => 'shops#shopping_mall'
