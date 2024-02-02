@@ -1,0 +1,29 @@
+<h2>ショッピングモール</h2>
+
+<div id='map'></div>
+
+<style>
+#map {
+  height: 750px;
+  width: 1000px;
+}
+</style>
+
+<script>
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.171075437602035, lng:136.88147969620726},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 35.171075437602035, lng:136.88147969620726},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
