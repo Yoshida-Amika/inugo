@@ -1,0 +1,18 @@
+<h2>新規投稿</h2>
+
+<%= form_with model: @tweet, url: tweets_path do |f| %>
+
+<p><label for="inputName" class="col-sm-2">画像</label>
+        <%= f.file_field :image, accept: "image/*" %>
+     </p>
+
+<p><label for="inputName" class="col-sm-2">内容文</label>
+        <%= f.text_area :sub_sentence %>
+     </p>
+
+
+
+<%= f.submit '投稿', class:"btn btn-success" %>
+
+<% end %>
+

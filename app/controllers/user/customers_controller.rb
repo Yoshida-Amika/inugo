@@ -4,11 +4,17 @@ class User::CustomersController < ApplicationController
 
 def show
   @user = current_user
-  
-  
+  @tweets = Tweet.all
 end
 
 def edit
+    @user = User.find(params[:id])
+end
+
+def update
+    @user = User.find(params[:id])
+    @user.update(users_params)
+    redirect_to customer_my_page_path
 end
 
 def confirmation
@@ -22,6 +28,11 @@ def destroy
 end
 
 private
+
+def users_params
+    params.require(:user).permit(:nickname, :email)
+end
+
 # def set_user
     # @user = User.find_by(:id => params[:id])
 # end

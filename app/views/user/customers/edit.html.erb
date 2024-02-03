@@ -1,1 +1,14 @@
-<h1>顧客の登録情報</h1>
+<h1>登録情報編集</h1>
+
+<%= form_with model: @user, url: customer_path(@user) do |f| %>
+
+      <p><label for="inputName" class="col-sm-2">ニックネーム</label>
+            <%= f.text_field :nickname, autofocus: true, id:"inputLastnickname", placeholder:"ニックネーム"%>
+      </p>
+
+      <p><label for="inputName" class="col-sm-2">メールアドレス</label>
+            <%= f.text_field :email, autofocus: true, id:"inputLastemail", placeholder:"メールアドレス"%>
+      </p>
+
+<%= f.submit "編集内容を保存", class:"btn btn-success" %>
+<% end %>

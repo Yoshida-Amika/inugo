@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  
-  
+
+
   root to: 'user/homes#top'
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -25,19 +25,21 @@ scope module: :user do
   get 'shops/activity' => 'shops#activity'
   resources :shops, only: [:show]
 
-  get 'user/my_page' => 'customers#show'
-  get 'user/confirmation' => 'customers#confirmation'
-  get 'user/tweet' => 'customers#index'
-  resources :customers, only: [:edit, :updeta, :destroy]
+  get 'customer/my_page' => 'customers#show'
+  get 'customer/confirmation' => 'customers#confirmation'
+  get 'customer/tweet' => 'customers#index'
+  resources :customers, only: [:edit, :update, :destroy]
 
   resources :nices
   resources :follows
 
   resources :inquirys
-  get 'user/thanks' => 'users#thanks'
+  get 'thanks' => 'users#thanks'
 
   resources :registrations
   resources :sessions
+  resources :tweets
+
 
 end
 
