@@ -28,7 +28,7 @@ scope module: :user do
   get 'customer/my_page' => 'customers#show'
   get 'customer/confirmation' => 'customers#confirmation'
   get 'customer/tweet' => 'customers#index'
-  resources :customers, only: [:edit, :update, :destroy]
+  resources :customers, only: [:edit, :update, :destroy, :updeta]
 
   resources :nices
   resources :follows

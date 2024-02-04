@@ -8,14 +8,15 @@
 <h2>
   投稿一覧
   <%= link_to "投稿", new_tweet_path %>
-  <%#= link_to "編集", edit_customer_path(current_user) %>
 </h2>
 <% @tweets.each do |tweet| %>
 <div>
 <p>
-  <%= image_tag @tweet.get_image(200,200) %>
-  <%= @tweet.sub_sentence %>
-
+  <%= image_tag tweet.get_image(200,200) %>
+  <%= tweet.sub_sentence %>
+  <%= link_to "編集", edit_tweet_path(tweet.id) %>
+  
+  <% end %>
 </p>
-<% end %>
+
 </div>
