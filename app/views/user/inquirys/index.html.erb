@@ -1,1 +1,16 @@
-<h1>問い合わせ</h1>
+<h2>問い合わせ</h2>
+
+<h3>お店の情報や機能の要望等の</h3>
+<h3>ご連絡お待ちしております。</h3>
+<h4>※100%反映されるわけではありません。</h4>
+
+<%= form_with model: @inquiry, url: inquirys_path do |f| %>
+
+<label for="inputName" class="col-sm-2">ご意見</label>
+        <%= f.text_area :opinion %>
+
+
+<%= f.submit '送信', class:"btn btn-success" %>
+
+<% end %>
+

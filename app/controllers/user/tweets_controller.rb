@@ -11,6 +11,9 @@ class User::TweetsController < ApplicationController
     redirect_to customer_my_page_path(@tweet.id)
   end
 
+  def everyone_tweet
+  end
+
   def edit
      @tweet = Tweet.find(params[:id])
   end

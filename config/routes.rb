@@ -34,11 +34,12 @@ scope module: :user do
   resources :follows
 
   resources :inquirys
-  get 'thanks' => 'users#thanks'
+  get 'thanks' => 'inquirys#thanks'
 
   resources :registrations
   resources :sessions
   resources :tweets
+  get 'everyone_tweet' => 'tweets#everyone_tweet'
 
 
 end
