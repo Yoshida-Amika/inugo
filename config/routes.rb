@@ -54,6 +54,7 @@ namespace :admin do
   get 'shops/activity' => 'shops#activity'
   resources :shops
   resources :users
+  resources :tweets
   resources :inquirys
 
 end

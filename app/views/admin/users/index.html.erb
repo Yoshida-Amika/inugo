@@ -1,1 +1,22 @@
-<h1>ユーザー</h1>
+<h2>ユーザー一覧</h2>
+
+<div class="col-9">
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th scope = "col">会員ID</th>
+            <th scope = "col">ニックネーム</th>
+            <th scope = "col">メールアドレス</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      <% @user.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.nickname, admin_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+      <% end %>
+      </tr>
+</tbody>
+</div>
