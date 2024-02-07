@@ -21,11 +21,10 @@
 　<% @tweets.each do |tweet| %>
 <div>
 <p>
-  <%= image_tag tweet.get_image(200,200) %>
+    <%= image_tag tweet.get_image(200,200) %>
     <%= tweet.sub_sentence %>
     <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
-     <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_path" rel="nofollow" data-method="delete" href="/admin/users/<%= @user.id %>">削除</a>
-
+    <%= link_to "削除", admin_tweet_path(tweet), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？" %>
   <% end %>
 </p>
 </div>

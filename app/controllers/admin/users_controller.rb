@@ -6,7 +6,7 @@ end
 
 def show
   @user = User.find(params[:id])
-  @tweets = Tweet.all
+  @tweets = @user.tweets
 end
 
 def edit
@@ -19,11 +19,6 @@ def update
   redirect_to  admin_user_path
 end
 
-# def destroy
-    # @tweet = Tweet.find(params[:id])
-    # @tweet.destroy
-    # redirect_to admin_user_path
-# end
 
 
 private

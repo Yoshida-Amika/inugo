@@ -12,6 +12,8 @@ class User::TweetsController < ApplicationController
   end
 
   def everyone_tweet
+    
+    @tweets = Tweet.all
   end
 
   def edit

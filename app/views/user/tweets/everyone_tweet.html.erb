@@ -1,1 +1,12 @@
 <h2>みんなの投稿</h2>
+
+<% @tweets.each do |tweet| %>
+
+<h4>
+    <%= tweet.user.nickname %>
+    <%= image_tag tweet.get_image(200,200) %>
+    <%= tweet.sub_sentence %>
+    <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
+</h4>
+
+<% end %>

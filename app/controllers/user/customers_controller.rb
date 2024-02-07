@@ -4,7 +4,7 @@ class User::CustomersController < ApplicationController
 
 def show
   @user = current_user
-  @tweets = Tweet.all
+  @tweets = @user.tweets
 end
 
 def edit
