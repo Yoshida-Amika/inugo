@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  has_many :likes, dependent: :destroy
+  has_many :niced_tweets, through: :nices, source: :tweet
+  def already_niced?(tweet)
+    self.nices.exists?(tweet_id: tweet.id)
+  end
   
 
 def get_image(width, height)

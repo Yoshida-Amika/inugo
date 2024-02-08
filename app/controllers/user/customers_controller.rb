@@ -27,6 +27,11 @@ def destroy
      redirect_to :root
 end
 
+def other_users
+  @user = current_user
+  @tweets = @user.tweets
+end
+
 private
 
 def users_params

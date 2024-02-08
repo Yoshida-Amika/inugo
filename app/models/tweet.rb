@@ -3,6 +3,7 @@ class Tweet < ApplicationRecord
 has_one_attached :image
  belongs_to :user
 
+
  def get_image(width, height)
   unless image.attached?
   file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -11,6 +12,12 @@ has_one_attached :image
     image.variant(resize: "#{width}x#{height}").processed
   end
 
+  has_many :nices, :dependent => :destroy
+  has_many :niced_users, through: :nices, source: :user
+
+def niced_by?(user)
+    nices.exists?(user_id: user.id)
+ end
 
 
 

@@ -6,20 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Admin.create!(
-  email: "iii@iii",
-  password: "iiiiii"
-)
+ Admin.create!(
+   email: "iii@iii",
+   password: "iiiiii"
+ )
 
 
+Genre.create!(
+  name: "宿泊施設"
+  )
+
+Genre.create!(
+  name: "ショッピングモール"
+  )
+
+Genre.create!(
+  name: "アクティビティ"
+  )
 
 
-# shop.create!(
-  # name: "平野屋",
-  # postal_code: "443-0021",
-  # address: "愛知県蒲郡市三谷町南山1-21",
-  # telephone_number: "0533-68-5161",
-
-
-
-  # )
+ Shop.create!(
+   genre_id: 1,
+   name: "平野屋",
+   postal_code: "443-0021",
+   address: "愛知県蒲郡市三谷町南山1-21",
+   telephone_number: "0533-68-5161",
+ )

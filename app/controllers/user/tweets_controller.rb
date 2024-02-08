@@ -7,13 +7,13 @@ class User::TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @tweet.save
+    @tweet.save!
     redirect_to customer_my_page_path(@tweet.id)
   end
 
   def everyone_tweet
-    
-    @tweets = Tweet.all
+    @tweets = Tweet.where.not(user_id: current_user.id)
+    @nice = Nice.new
   end
 
   def edit

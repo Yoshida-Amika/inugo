@@ -28,9 +28,9 @@ scope module: :user do
   get 'customer/my_page' => 'customers#show'
   get 'customer/confirmation' => 'customers#confirmation'
   get 'customer/tweet' => 'customers#index'
+  get 'customer/other_users' => 'customers#other_users'
   resources :customers, only: [:edit, :update, :destroy, :updeta]
 
-  resources :nices
   resources :follows
 
   resources :inquirys
@@ -38,8 +38,13 @@ scope module: :user do
 
   resources :registrations
   resources :sessions
-  resources :tweets
   get 'everyone_tweet' => 'tweets#everyone_tweet'
+  resources :tweets, only: [:new, :create, :edit, :update, :destroy] do
+    resource :nices, only: [:create, :destroy]
+  end
+
+  get 'nices_index' => 'nices#index'
+
 
 
 end
