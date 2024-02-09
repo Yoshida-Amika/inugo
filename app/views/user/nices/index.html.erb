@@ -1,1 +1,7 @@
-<h1>いいね</h1>
+<h1>いいね一覧</h1>
+
+<div>
+  <% @niced_tweets.each do |tweet| %>
+    <%= render  nices_content_path, tweet: tweet %>
+  <% end %>
+</div>

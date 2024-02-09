@@ -8,6 +8,7 @@ class User::NicesController < ApplicationController
 
 def create
   @nice = current_user.nices.create(tweet_id: params[:tweet_id])
+  nice.save
   redirect_back(fallback_location:  customer_other_users_path)
 end
 

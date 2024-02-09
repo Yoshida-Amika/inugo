@@ -1,0 +1,6 @@
+<div id="nice_list_<%= tweet.id %>">
+  <div><%=tweet.user.nickname %></div>
+  <div><%= image_tag tweet.get_image(200,200) %></div>
+  <div><%= tweet.sub_sentence %></div>
+  <div id="tweet_<%= tweet.id %>"><%= render nices_index_path, tweet: tweet %></div>
+</div>
