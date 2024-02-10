@@ -44,7 +44,6 @@ scope module: :user do
   end
 
   get 'nices_index' => 'nices#index'
-  get 'nices_content' => 'nices#_nices_content'
 
 
 
