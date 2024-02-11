@@ -5,7 +5,7 @@ class User::NicesController < ApplicationController
     @nice = Nice.where(id: params[:id])
     @nice = Nice.new
     @tweets = Tweet.where.not(user_id: current_user.id)
-    @nice_count = 0
+
   end
 
 

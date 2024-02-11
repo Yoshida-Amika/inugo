@@ -10,15 +10,15 @@
     　<!--いいね-->
       <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
        <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
-       <%= @nice_count + 1 %>
+
       <% end %>
     <% else %>
       <!--いいね取り消し-->
       <%= button_to tweet_nices_path(tweet), method: :post, style: "border: none; background: transparent" do %>
       <i class="fa-regular fa-heart" style="color: #808080;"></i>
       <% end %>
-    <%= @nice_count %>
     <% end %>
+    <%= tweet.nices.count %>
     <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
 </h4>
 

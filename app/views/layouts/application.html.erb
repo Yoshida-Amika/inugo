@@ -34,9 +34,8 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", shops_accommodation_path %>
@@ -60,9 +59,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", shops_accommodation_path %>
@@ -87,9 +84,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", shops_accommodation_path %>
@@ -113,9 +108,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", shops_accommodation_path %>
@@ -139,9 +132,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", shops_accommodation_path %>
@@ -166,9 +157,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% end %>
 
       <% elsif admin_signed_in? %>
@@ -193,9 +182,7 @@
         <%= link_to "お店一覧", admin_path %>
         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-       </button>
+       <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
 
     <% else %>
 
