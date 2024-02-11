@@ -3,14 +3,13 @@
 <% @tweets.each do |tweet| %>
 
 <h4>
-    <%= link_to tweet.user.nickname, customer_other_users_path %>
+    <%= link_to tweet.user.nickname, customer_other_path(tweet.user) %>
     <%= image_tag tweet.get_image(200,200) %>
     <%= tweet.sub_sentence %>
     <% if current_user.already_niced?(tweet) %>
     　<!--いいね-->
       <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
        <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
-
       <% end %>
     <% else %>
       <!--いいね取り消し-->

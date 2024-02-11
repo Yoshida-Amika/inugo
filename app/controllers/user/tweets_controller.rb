@@ -12,6 +12,7 @@ class User::TweetsController < ApplicationController
   end
 
   def everyone_tweet
+    @user = User.find(current_user.id)
     @tweets = Tweet.where.not(user_id: current_user.id)
     @nice = Nice.new
     @nice_count = Nice.where(tweet_id: params[:tweet_id]).count

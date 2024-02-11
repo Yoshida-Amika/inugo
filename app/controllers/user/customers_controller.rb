@@ -28,8 +28,9 @@ def destroy
 end
 
 def other_users
-  @user = current_user
+  @user = User.find(params[:id])
   @tweets = @user.tweets
+
 end
 
 private

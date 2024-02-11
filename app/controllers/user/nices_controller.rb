@@ -1,25 +1,25 @@
 class User::NicesController < ApplicationController
 
   def index
-    @nices = Nice.all
-    @nice = Nice.where(id: params[:id])
+    @nices = current_user.nices
+    @user = User.find(current_user.id)
     @nice = Nice.new
-    @tweets = Tweet.where.not(user_id: current_user.id)
-
   end
 
 
 def create
   @nice = current_user.nices.create(tweet_id: params[:tweet_id])
-  @nice.save!
-  redirect_back(fallback_location:  customer_other_users_path)
+  @nice.save
+  redirect_back(fallback_location:  customer_other_path(@nice.user))
 end
 
 def destroy
   @nice = Nice.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
   @nice.destroy
-  redirect_back(fallback_location:  customer_other_users_path)
+  redirect_back(fallback_location:  customer_other_path(@nice.user))
 end
+
+
 
 private
 
