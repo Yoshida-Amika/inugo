@@ -1,1 +1,22 @@
-<h1>フォロー</h1>
+<h1>フォロー一覧</h1>
+
+<% if users.exists? %>
+  <% users.each do |user| %>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to user.nickname, customer_other_path(user) %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

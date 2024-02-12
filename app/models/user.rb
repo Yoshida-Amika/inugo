@@ -11,6 +11,26 @@ class User < ApplicationRecord
     self.nices.exists?(tweet_id: tweet.id)
   end
   
+  # フォロー関係
+  has_many :follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_follows, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
+
+  # 一覧画面
+  has_many :user_followings, through: :follows, source: :user_followed
+  has_many :user_followers, through: :reverse_of_follows, source: :user_follower
+  
+  # フォローしたときの処理
+def user_follow(user_id)
+  relationships.create(user_followed_id: user_id)
+end
+# フォローを外すときの処理
+def user_unfollow(user_id)
+  relationships.find_by(user_followed_id: user_id).destroy
+end
+# フォローしているか判定
+def user_following?(user)
+  followings.include?(user)
+end
 
 def get_image(width, height)
   unless image.attached?

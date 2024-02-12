@@ -1,7 +1,0 @@
-
-
-<%= link_to image( tweet.image.variant(resize: '100x100') ), tweet_path(tweet.id) %>
-<%= link_to tweet.user.name, user_path(tweet.user.id) %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= tweet.nices.length %>
-<%= link_to tweet.sub_sentence, tweet_path(tweet.id) %>
