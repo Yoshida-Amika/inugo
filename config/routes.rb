@@ -28,14 +28,14 @@ scope module: :user do
   get 'customer/my_page' => 'customers#show'
   get 'customer/confirmation' => 'customers#confirmation'
   get 'customer/tweet' => 'customers#index'
-  get 'customer/other_users/:id' => 'customers#other_users' , as: :customer_other
-  #フォロー
-  resources :customers, only: [:edit, :update, :destroy] do
-    #resource :follows do
+  resources :customers, only: [:edit, :update, :destroy]
+
+  get 'other_users/:id' => 'users#other_users' , as: :other
+  #フォロー系
+  resource :users do
     get 'follows', as: 'follows'
-    #end
-    get 'followings' => 'follows#index', as: 'followings'
   end
+  get 'followings' => 'follows#index', as: 'followings'
 
 
 

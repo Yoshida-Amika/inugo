@@ -3,7 +3,7 @@
 <% @tweets.each do |tweet| %>
 
 <h4>
-    <%= link_to tweet.user.nickname, customer_other_path(tweet.user) %>
+    <%= link_to tweet.user.nickname, other_path(tweet.user) %>
     <%= image_tag tweet.get_image(200,200) %>
     <%= tweet.sub_sentence %>
     <% if current_user.already_niced?(tweet) %>

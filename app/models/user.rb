@@ -12,23 +12,24 @@ class User < ApplicationRecord
   end
 
   # フォロー関係
-  has_many :follows, class_name: "Follow", foreign_key: "user_followr_id", dependent: :destroy
+  has_many :follows, class_name: "Follow", foreign_key: "user_follower_id", dependent: :destroy
   has_many :reverse_of_follows, class_name: "Follow", foreign_key: "user_followed_id", dependent: :destroy
 
   # 一覧画面
-  has_many :user_followings, through: :follows, source: :user_followed
-  has_many :user_followers, through: :reverse_of_follows, source: :user_follower
+  has_many :user_followings, through: :follows, source: :reverse_of_follows
+  has_many :user_followers, through: :reverse_of_follows, source: :follows
 
   # フォローしたときの処理
-  def user_follow(user_id)
-    follows.create(user_followed_id: user_id)
+  def user_follow(user)
+    #byebug
+    follows.create!(user_followed_id: user.id)
   end
-  
+
   # フォローを外すときの処理
   def user_unfollow(user_id)
     follows.find_by(user_followed_id: user_id).destroy
   end
-  
+
   # フォローしているか判定
   def user_following?(user)
     follows.include?(user)

@@ -3,7 +3,7 @@
 <% @nices.each do |nice| %>
 
 <h4>
-    <%= link_to nice.tweet.user.nickname, customer_other_path(nice.tweet.user) %>
+    <%= link_to nice.tweet.user.nickname, other_path(nice.tweet.user) %>
     <%= image_tag nice.tweet.get_image(200,200) %>
     <%= nice.tweet.sub_sentence %>
     <% if current_user.already_niced?(nice.tweet) %>

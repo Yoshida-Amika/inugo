@@ -27,18 +27,9 @@ def destroy
      redirect_to :root
 end
 
-def other_users
-  @user = User.find(params[:id])
-  @tweets = @user.tweets
-  @follow = Follow.new
 
-end
 
-  def follows
-    #byebug
-    current_user.user_follow(params[:customer_id])
-    redirect_to customer_other_path(id: params[:customer_id])
-  end
+  
 
   private
 
