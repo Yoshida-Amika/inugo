@@ -29,8 +29,11 @@ scope module: :user do
   get 'customer/confirmation' => 'customers#confirmation'
   get 'customer/tweet' => 'customers#index'
   get 'customer/other_users/:id' => 'customers#other_users' , as: :customer_other
-  resources :customers, only: [:edit, :update, :destroy, :updeta] do
-    resource :follows, only: [:create, :destroy]
+  #フォロー
+  resources :customers, only: [:edit, :update, :destroy] do
+    #resource :follows do
+    get 'follows', as: 'follows'
+    #end
     get 'followings' => 'follows#index', as: 'followings'
   end
 

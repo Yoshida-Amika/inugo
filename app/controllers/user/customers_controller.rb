@@ -34,15 +34,16 @@ def other_users
 
 end
 
-private
+  def follows
+    #byebug
+    current_user.user_follow(params[:customer_id])
+    redirect_to customer_other_path(id: params[:customer_id])
+  end
 
-def users_params
+  private
+
+  def users_params
     params.require(:user).permit(:nickname, :email)
-end
-
-# def set_user
-    # @user = User.find_by(:id => params[:id])
-# end
-
+  end
 
 end
