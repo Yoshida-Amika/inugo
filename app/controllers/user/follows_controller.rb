@@ -1,5 +1,6 @@
 class User::FollowsController < ApplicationController
 
+  #フォローするとき
   def create
     user = User.find(params[:user_id])
     current_user.user_follow(user)
