@@ -6,7 +6,6 @@ class CreateFollows < ActiveRecord::Migration[6.1]
       # フォローされた
       t.integer :user_followed_id
 
-
       t.timestamps
     end
   end

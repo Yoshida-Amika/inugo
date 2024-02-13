@@ -32,10 +32,15 @@ scope module: :user do
 
   get 'other_users/:id' => 'users#other_users' , as: :other
   #フォロー系
-  resource :users do
-    get 'follows', as: 'follows'
+  resources :users do
+ 
+    resource :follows, only: [:create, :destroy]
+    member do
+      get 'followings'
+      get 'followers'
+    end
   end
-  get 'followings' => 'follows#index', as: 'followings'
+  
 
 
 

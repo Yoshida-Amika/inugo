@@ -6,10 +6,9 @@ class User::UsersController < ApplicationController
     @follow = Follow.new
   end
 
-  def follows
-    byebug
-    current_user.user_follow(User.find(params[:id]))
-    redirect_to other_path(id: params[:id])
+  def followings
+    @user = User.find(params[:id])
+    @users = @user.user_followings
   end
 
 end
