@@ -1,0 +1,46 @@
+<h1>お店</h1>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 750px;
+  width: 1000px;
+}
+</style>
+
+<script>
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.171075437602035, lng:136.88147969620726},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 35.171075437602035, lng:136.88147969620726},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
+
+
+<%= form_shop({controller:"genres",action:"index"}, method: :get) do %>
+  <li><%= select_tag :shop_search, options_from_collection_for_select(@shop, "id","name") %></li>
+<%= submit_tag '検索' %>
+<% end %>
+
+<% @shops.each do |shop| %>
+
+<h4>
+  名前：<%= shop.name %>
+  郵便番号：<%= shop.postal_code %>
+  住所： <%= shop.address %>
+  電話番号: <%= shop.telephone_number %>
+  サイト: <%= shop.site_url %>
+</h4>
+
+<% end %>

@@ -95,12 +95,12 @@ ActiveRecord::Schema.define(version: 2024_01_29_111754) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.integer "genre_id"
     t.string "name"
     t.string "image"
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
+    t.string "site_url"
     t.string "lat"
     t.string "lon"
     t.datetime "created_at", precision: 6, null: false

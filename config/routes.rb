@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 scope module: :user do
 
-  get 'shops/accommodation' => 'shops#index'
+  get 'shops/accommodation' => 'shops#accommodation'
   get 'shops/shopping_mall' => 'shops#shopping_mall'
   get 'shops/activity' => 'shops#activity'
   resources :shops, only: [:show]
@@ -33,14 +33,14 @@ scope module: :user do
   get 'other_users/:id' => 'users#other_users' , as: :other
   #フォロー系
   resources :users do
- 
+
     resource :follows, only: [:create, :destroy]
     member do
       get 'followings'
       get 'followers'
     end
   end
-  
+
 
 
 
