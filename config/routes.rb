@@ -23,7 +23,9 @@ scope module: :user do
   get 'shops/accommodation' => 'shops#accommodation'
   get 'shops/shopping_mall' => 'shops#shopping_mall'
   get 'shops/activity' => 'shops#activity'
-  resources :shops, only: [:show]
+  resources :shops, only: [:show] do
+    resource :revues, only: [:create, :destroy]
+  end
 
   get 'customer/my_page' => 'customers#show'
   get 'customer/confirmation' => 'customers#confirmation'

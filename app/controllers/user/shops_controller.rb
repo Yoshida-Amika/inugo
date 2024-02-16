@@ -3,6 +3,7 @@ class User::ShopsController < ApplicationController
   def accommodation
     target_genre = Genre.find_by(name: "宿泊施設")
     @shops = target_genre.shops
+    @revue = Revue.new
   end
 
   def shopping_mall

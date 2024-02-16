@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 2024_01_29_111754) do
   create_table "revues", force: :cascade do |t|
     t.integer "user_id"
     t.integer "shop_id"
-    t.integer "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

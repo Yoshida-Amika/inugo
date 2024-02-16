@@ -11,18 +11,22 @@ class User < ApplicationRecord
     self.nices.exists?(tweet_id: tweet.id)
   end
 
+  def already_revued?(shop)
+    self.revues.exists?(shop_id: shop.id)
+  end
+
   # フォローした人を作る
   has_many :follows, class_name: "Follow", foreign_key: "user_follower_id", dependent: :destroy
   # フォローした人の一覧
   has_many :user_followings, through: :follows, source: :user_followed
-  
+
   #フォローされた人の中間テーブル
   has_many :reverse_of_follows, class_name: "Follow", foreign_key: "user_followed_id", dependent: :destroy
   #フォローされた人に一覧
   has_many :user_followers, through: :reverse_of_follows, source: :user_follower
 
-  
-  
+
+
 
   # フォローしたときの処理
   def user_follow(user)

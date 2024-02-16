@@ -4,7 +4,6 @@ class CreateRevues < ActiveRecord::Migration[6.1]
 
       t.integer :user_id
       t.integer :shop_id
-      t.integer :star
       t.timestamps
     end
   end
