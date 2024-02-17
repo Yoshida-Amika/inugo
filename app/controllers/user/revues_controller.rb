@@ -1,15 +1,21 @@
 class User::RevuesController < ApplicationController
 
+def index
+  @revues = current_user.revues
+  @user = User.find(current_user.id)
+  @revue = Revue.new
+end
+
 def create
-  @revues = current_user.revues.create(shop_id: params[:shop_id])
-  @revues.save
-  redirect_back(fallback_location:  other_path(@revue.user))
+  @revue = current_user.revues.create(shop_id: params[:shop_id])
+  @revue.save
+  redirect_back(fallback_location: other_path(@revue.user))
 end
 
 def destroy
   @revue = Revue.find_by(shop_id: params[:shop_id], user_id: current_user.id)
   @revue.destroy
-  redirect_back(fallback_location:  other_path(@revue.user))
+  redirect_back(fallback_location: other_path(@revue.user))
 end
 
 private

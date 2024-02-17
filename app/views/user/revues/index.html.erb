@@ -1,4 +1,4 @@
-<h1>お店</h1>
+<h1>お気に入り店一覧</h1>
 
 <!--マップ表示-->
 <div id='map'></div>
@@ -30,23 +30,23 @@ function initMap(){
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
 
-<% @shops.each do |shop| %>
+<% @revues.each do |revue| %>
 
 <h4>
   <p>
-    <a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a>
-    郵便番号：<%= shop.postal_code %>
-    住所： <%= shop.address %>
-    電話番号: <%= shop.telephone_number %>
+    <a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
+    郵便番号：<%= revue.shop.postal_code %>
+    住所： <%= revue.shop.address %>
+    電話番号: <%= revue.shop.telephone_number %>
       <% if user_signed_in? %>
-      <% if current_user.already_revued?(shop) %>
+      <% if current_user.already_revued?(revue.shop) %>
       　<!--お気に入り-->
-        <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
+        <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
            <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
         <% end %>
       <% else %>
         <!--お気に入り取り消し-->
-        <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
+        <%= button_to shop_revues_path(revue.shop), method: :post, style: "border: none; background: transparent" do %>
           <i class="fa-regular fa-star"></i>
         <% end %>
       <% end %>

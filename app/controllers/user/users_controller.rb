@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
     @follow = Follow.new
   end
 
-　#フォロー一覧
+
   def followings
     @user = User.find(params[:id])
     @users = @user.user_followings

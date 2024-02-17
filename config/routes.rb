@@ -23,6 +23,9 @@ scope module: :user do
   get 'shops/accommodation' => 'shops#accommodation'
   get 'shops/shopping_mall' => 'shops#shopping_mall'
   get 'shops/activity' => 'shops#activity'
+
+  get 'favorite' => 'revues#index'
+
   resources :shops, only: [:show] do
     resource :revues, only: [:create, :destroy]
   end
