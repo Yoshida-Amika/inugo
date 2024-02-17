@@ -11,6 +11,7 @@ class User < ApplicationRecord
     self.nices.exists?(tweet_id: tweet.id)
   end
 
+  has_many :revues
   def already_revued?(shop)
     self.revues.exists?(shop_id: shop.id)
   end
