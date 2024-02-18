@@ -1,1 +1,22 @@
-<h1>お店</h1>
+<h1>お店編集</h1>
+
+<%= form_with model: @shop, url: admin_shop_path(@shop.id), method: :patch do |f| %>
+<!--前のページに戻るURL作成-->
+<%= f.hidden_field :before_url, value: request.referer  %>
+<!---->
+  <h3>名前</h3>
+    <%= f.text_field :name %>
+  <h3>お店のURL</h3>
+    <%= f.text_area :site_url %>
+  <h3>郵便番号</h3>
+    <%= f.text_field :postal_code %>
+  <h3>住所</h3>
+  <%= f.text_area :address %>
+  <h3>電話番号</h3>
+    <%= f.text_field :telephone_number %>
+
+  <p><%= f.submit '保存' %></p>
+
+  <p><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "消しますか？" %></p>
+
+<% end %>

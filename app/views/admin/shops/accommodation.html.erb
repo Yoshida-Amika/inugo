@@ -41,7 +41,7 @@ function initMap(){
     郵便番号：<%= shop.postal_code %>
     住所： <%= shop.address %>
     電話番号: <%= shop.telephone_number %>
-    <%= link_to "削除", admin_shop_path(shop.id), method: :delete, "data-confirm" => "消しますか？" %>
+    <%= link_to "編集", edit_admin_shop_path(shop.id) %>
   </p>
 </h4>
 
