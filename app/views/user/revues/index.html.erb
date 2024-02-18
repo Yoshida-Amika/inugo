@@ -34,6 +34,9 @@ function initMap(){
 
 <h4>
   <p>
+    <% revue.shop.genres.each do |genre| %>
+    <%= genre.name %>
+    <% end %>
     <a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
     郵便番号：<%= revue.shop.postal_code %>
     住所： <%= revue.shop.address %>
