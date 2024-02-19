@@ -49,7 +49,7 @@ scope module: :user do
 
 
 
-  resources :inquirys
+  resources :inquirys, only: [:index, :create]
   get 'thanks' => 'inquirys#thanks'
 
   resources :registrations
@@ -74,9 +74,9 @@ namespace :admin do
   get 'shops/shopping_mall' => 'shops#shopping_mall'
   get 'shops/activity' => 'shops#activity'
   resources :shops
+  resources :inquirys, only: [:index]
   resources :users
   resources :tweets
-  resources :inquirys
 
 end
 

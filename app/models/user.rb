@@ -10,6 +10,8 @@ class User < ApplicationRecord
   def already_niced?(tweet)
     self.nices.exists?(tweet_id: tweet.id)
   end
+  
+  has_many :inquiry
 
   has_many :revues
   def already_revued?(shop)
