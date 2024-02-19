@@ -1,9 +1,16 @@
 <h1>お店編集</h1>
 
 <%= form_with model: @shop, url: admin_shop_path(@shop.id), method: :patch do |f| %>
-<!--前のページに戻るURL作成-->
-<%= f.hidden_field :before_url, value: request.referer  %>
+
+<h3>ジャンル選択</h3>
+<h4>
+  <!--ジャンルボタン（複数選択可）-->
+<%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+<% end %>
 <!---->
+</h4>
+
   <h3>名前</h3>
     <%= f.text_field :name %>
   <h3>お店のURL</h3>
