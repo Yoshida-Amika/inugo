@@ -4,10 +4,12 @@
 <h3>ご連絡お待ちしております。</h3>
 <h4>※100%反映されるわけではありません。</h4>
 
-<%= form_with model: @inquiry, url: inquirys_path do |f| %>
+<%= form_with model: @inquiry, url: inquiries_path do |f| %>
 
 <label for="inputName" class="col-sm-2">ご意見</label>
         <%= f.text_area :opinion %>
+
+<%= f.hidden_field :inquiry, value: @inquiry %>
 
 
 <%= f.submit '送信', class:"btn btn-success" %>

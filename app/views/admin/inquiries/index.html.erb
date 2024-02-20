@@ -12,13 +12,14 @@
     </thead>
 
     <tbody>
-      <% @user.each do |user| %>
+      <% @inquiry.each do |inquiry| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= link_to user.nickname, admin_user_path(user.id) %></td>
-        <td><%= user.email %></td>
-        <tb><%= user.inquiry.opinion %></tb>
-      <% end %>
+        <td><%= inquiry.user.id %></td>
+        <td><%= link_to inquiry.user.nickname, admin_user_path(inquiry.user.id) %></td>
+        <td><%= inquiry.user.email %></td>
+        <td><%= inquiry.opinion %></td>
       </tr>
+      <% end %>
 </tbody>
+</table>
 </div>
