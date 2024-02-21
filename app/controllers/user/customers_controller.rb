@@ -8,10 +8,18 @@ def show
 end
 
 def edit
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_back(fallback_location: root_url)
+    end
     @user = User.find(params[:id])
 end
 
 def update
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_back(fallback_location: root_url)
+    end
     @user = User.find(params[:id])
     @user.update(users_params)
     redirect_to customer_my_page_path
@@ -21,17 +29,16 @@ def confirmation
 end
 
 def destroy
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_back(fallback_location: root_url)
+    end
      @user = User.find(params[:id])
      @user.destroy
-     flash[:notice] = "ユーザーを削除しました。"
-     redirect_to :root
+     redirect_to root_path, notice: 'ユーザーを削除しました。'
 end
 
-
-
-
-
-  private
+private
 
   def users_params
     params.require(:user).permit(:nickname, :email)

@@ -3,8 +3,9 @@
 <h2>退会すると以下のデータ内容が削除されます。</h2>
 <h3>・投稿した日記</h3>
 <h3>・いいねした日記</h3>
+<h3>・お気に入りに登録したお店</h3>
 <h3>・フォローした投稿者</h3>
 <h2>よろしいですか？</h2>
 
 <%=link_to "退会しない", customer_my_page_path %>
-<%=link_to "退会する",customer_path(current_user.id), class: "destroy-user", method: :delete, "deta-confirm" => "本当に退会しますか？" %>
+<%=link_to "退会する",customer_path(current_user.id), method: :delete, "deta-confirm" => "本当に退会しますか？" %>

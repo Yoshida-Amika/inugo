@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
-  has_many :likes, dependent: :destroy
+ # has_many :likes, dependent: :destroy
   has_many :niced_tweets, through: :nices, source: :tweet
   def already_niced?(tweet)
     self.nices.exists?(tweet_id: tweet.id)
   end
-  
+
   has_many :inquiry
 
   has_many :revues
@@ -53,10 +53,15 @@ def get_image(width, height)
   image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
     image.variant(resize: "#{width}x#{height}").processed
-  end
+end
 
-#has_many :follows, :dependent => :destroy
+# 退会時の削除内容
 has_many :nices, :dependent => :destroy
 has_many :tweets , :dependent => :destroy
+#has_many :follows , :dependent => :destroy
+has_many :inquiries , :dependent => :destroy
+has_many :revues , :dependent => :destroy
+
+
 
 end

@@ -74,7 +74,7 @@ namespace :admin do
   get 'shops/shopping_mall' => 'shops#shopping_mall'
   get 'shops/activity' => 'shops#activity'
   resources :shops
-  resources :inquiries, only: [:index]
+  resources :inquiries, only: [:index,:destroy]
   resources :users
   resources :tweets
 

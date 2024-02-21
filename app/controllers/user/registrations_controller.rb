@@ -30,9 +30,17 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+   def destroy
+     # 論理削除処理
+    soft_delete(current_user)
+    # Deviceの論理削除後の後処理
+    respond_with_navigational do
+      # 強制ログアウト
+      sign_out current_user
+      # ログアウト後のページ遷移
+      redirect_to root_path
+    end
+   end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -64,4 +72,5 @@ class User::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end
