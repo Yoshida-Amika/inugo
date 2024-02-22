@@ -1,6 +1,15 @@
 <h2>アクティビティ</h2>
 <h3><%= link_to "追加", new_admin_shop_path %></h3>
 
+<!--検索フォーム-->
+<input id="address" type="textbox" value="住所検索">
+<input type="button" value="Encode" onclick="codeAddress()">
+<!---->
+
+<!--緯度経度表示-->
+<div id="display">緯度経度表示</div>
+<!---->
+
 <!--マップ表示-->
 <div id='map'></div>
 
@@ -13,13 +22,18 @@
 
 <script>
 let map
+let geocoder
+
+// 緯度経度表示
+const display = document.getElementById('display')
+//
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 35.171075437602035, lng:136.88147969620726},
-    zoom: 12,
+    zoom: 14,
   });
 
   marker = new google.maps.Marker({
@@ -27,6 +41,28 @@ function initMap(){
     map: map
   });
 }
+
+//検索フォームのボタンが押された時に実行される
+function codeAddress(){
+  //検索フォームの入力内容を取得
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    //該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新する
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      //検索結果が何もなかった場合に表示
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
