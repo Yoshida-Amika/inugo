@@ -1,8 +1,8 @@
 <h1>宿泊施設</h1>
 
 <!--検索フォーム-->
-<input id="address" type="textbox" value="住所検索">
-<input type="button" value="Encode" onclick="codeAddress()">
+<input id="address" type="textbox" placeholder="住所検索">
+<input type="button" value="検索" onclick="codeAddress()">
 <!---->
 
 <!--マップ表示-->
@@ -18,20 +18,36 @@
 <script>
 let geocoder
 let map
+let circle
+
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.171075437602035, lng:136.88147969620726},
     zoom: 14,
+    center: new google.maps.LatLng(lat, lng),
+    mapTypeId: 'roadmap'
   });
 
   marker = new google.maps.Marker({
-    position:  {lat: 35.171075437602035, lng:136.88147969620726},
+    position:  {lat: 35.171075437602035, lng: 136.88147969620726},
     map: map
   });
+
+  circle = new google.maps.Circle({
+    map: map,
+    center: new google.maps.LatLng{lat: 35.171075437602035, lnglng: 136.88147969620726},
+    // 半径を指定（半径1キロ）
+    radius: 1000,
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+  });
 }
+
 
 //検索フォームのボタンが押された時に実行される
 function codeAddress(){
@@ -41,6 +57,7 @@ function codeAddress(){
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     //該当する検索結果がヒットした時に、地図の中心を検索結果の緯度経度に更新する
     if (status == 'OK') {
+
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: map,
