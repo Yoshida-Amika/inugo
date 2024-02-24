@@ -16,9 +16,12 @@ def geocode_full_address
     coords = Geocoder.coordinates(
       self.prefecture + self.city + self.address # 県名 + 市町村名 + 丁目番地
     )
-    self.latitude = coords[0]
-    self.longitude = coords[1]
+    self.lat = coords[0]
+    self.lon = coords[1]
 end
+
+geocoded_by :address, latitude: :lat, longitude: :lon
+after_validation :geocode
 
 
 end

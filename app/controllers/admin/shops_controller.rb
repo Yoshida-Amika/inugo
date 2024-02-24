@@ -82,7 +82,7 @@ end
 private
 
     def shop_params
-      params.require(:shop).permit(:name, :site_url, :postal_code, :address, :telephone_number, genre_ids: [])
+      params.require(:shop).permit(:name, :site_url, :postal_code, :address, :telephone_number,:lat, :lon, genre_ids: [])
     end
 
     # genre_ids: []は新規追加のジャンルボタンに使用
