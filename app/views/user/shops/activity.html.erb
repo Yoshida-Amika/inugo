@@ -29,7 +29,7 @@ function initMap(){
   <% @shops.each do |shop| %>
     <% if shop.lat && shop.lon %>
     (function(){
-      var contentString = "住所：<%= shop.address %>";
+      var contentString = "<%= shop.name %> 住所：<%= shop.address %>";
 
           var marker = new google.maps.Marker({
               position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
