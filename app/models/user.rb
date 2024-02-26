@@ -58,7 +58,6 @@ end
 # 退会時の削除内容
 has_many :nices, :dependent => :destroy
 has_many :tweets , :dependent => :destroy
-#has_many :follows , :dependent => :destroy
 has_many :inquiries , :dependent => :destroy
 has_many :revues , :dependent => :destroy
 

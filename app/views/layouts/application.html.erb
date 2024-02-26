@@ -30,6 +30,8 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
+        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
        </button>
@@ -38,15 +40,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-
-
         <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
         <% elsif request.fullpath == "/follows" %>
 
@@ -62,6 +56,8 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
        </button>
@@ -71,13 +67,6 @@
        </button>
 
        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
-
 
        <% elsif request.fullpath == "/nices" %>
 
@@ -93,6 +82,8 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
        </button>
@@ -103,12 +94,6 @@
 
 
        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
        <% elsif request.fullpath == "/inquiries" %>
 
@@ -124,6 +109,8 @@
         <%= link_to "フォロー一覧", followings_user_path(current_user) %>
        </button>
 
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
        </button>
@@ -134,12 +121,6 @@
 
 
        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
         <% elsif request.fullpath == "/thanks" %>
 
@@ -148,8 +129,14 @@
        </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "お気に入り店一覧", favorite_path %>
+       </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
+
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -159,17 +146,7 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "お気に入り店一覧", favorite_path %>
-       </button>
-
        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
         <% elsif request.fullpath == "/everyone_tweet" %>
 
@@ -178,8 +155,14 @@
        </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "お気に入り店一覧", favorite_path %>
+       </button>
+
+       <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
+
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -189,46 +172,87 @@
         <%= link_to "マイページ", customer_my_page_path %>
        </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "お気に入り店一覧", favorite_path %>
-       </button>
 
        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
         <% elsif request.fullpath == "/nices_index" %>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "いいね一覧", nices_index_path %>
-       </button>
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "いいね一覧", nices_index_path %>
+         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
-       </button>
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "お気に入り店一覧", favorite_path %>
+         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "問い合わせ", inquiries_path %>
-       </button>
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
+         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "マイページ", customer_my_page_path %>
-       </button>
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
 
-       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "問い合わせ", inquiries_path %>
+         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "お気に入り店一覧", favorite_path %>
-       </button>
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "マイページ", customer_my_page_path %>
+         </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
-        </button>
 
+         <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+        <% elsif request.fullpath == "/favorite" %>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "いいね一覧", nices_index_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "お気に入り店一覧", favorite_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
+         </button>
+
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "問い合わせ", inquiries_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "マイページ", customer_my_page_path %>
+         </button>
+
+         <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+       <% elsif request.fullpath == followings_user_path(current_user) %>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "いいね一覧", nices_index_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "お気に入り店一覧", favorite_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
+         </button>
+
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "問い合わせ", inquiries_path %>
+         </button>
+
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "マイページ", customer_my_page_path %>
+         </button>
+
+         <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
        <% else %>
 
@@ -243,6 +267,8 @@
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "アクティビティ", shops_activity_path %>
        </button>
+
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "マイページ", customer_my_page_path %>
@@ -269,6 +295,8 @@
         <%= link_to "ユーザー一覧", admin_users_path %>
         </button>
 
+        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ一覧", admin_inquiries_path %>
         </button>
@@ -288,6 +316,8 @@
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "アクティビティ", shops_activity_path %>
        </button>
+
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "新規登録", new_user_registration_path %>
