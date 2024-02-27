@@ -31,13 +31,13 @@ function initMap(){
     (function(){
       var contentString = "<%= shop.name %> 住所：<%= shop.address %>";
 
-          var marker = new google.maps.Marker({
-              position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
-              map: map,
-              title: contentString
-          });
+      var marker = new google.maps.Marker({
+          position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
+          map: map,
+          title: contentString
+      });
 
-          })();
+      })();
     <% end %>
   <% end %>
 }

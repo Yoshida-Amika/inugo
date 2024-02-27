@@ -30,7 +30,8 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
-        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
+        <!--data: {"turbolinks" => false}  ターボリンクスを使う-->
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -56,7 +57,7 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -82,7 +83,7 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -109,7 +110,7 @@
         <%= link_to "フォロー一覧", followings_user_path(current_user) %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -136,7 +137,7 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -162,7 +163,7 @@
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ", inquiries_path %>
@@ -189,7 +190,7 @@
           <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
          </button>
 
-         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
          <button class="btn btn-sm btn-outline-secondary" type="button">
           <%= link_to "問い合わせ", inquiries_path %>
@@ -216,7 +217,7 @@
           <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
          </button>
 
-         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
          <button class="btn btn-sm btn-outline-secondary" type="button">
           <%= link_to "問い合わせ", inquiries_path %>
@@ -242,7 +243,7 @@
           <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
          </button>
 
-         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+         <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
          <button class="btn btn-sm btn-outline-secondary" type="button">
           <%= link_to "問い合わせ", inquiries_path %>
@@ -257,18 +258,18 @@
        <% else %>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
+        <%= link_to "宿泊施設", shops_accommodation_path, data: {"turbolinks" => false} %>
         </button>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ショッピングモール", shops_shopping_mall_path %>
+        <%= link_to "ショッピングモール", shops_shopping_mall_path, data: {"turbolinks" => false} %>
         </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "アクティビティ", shops_activity_path %>
+        <%= link_to "アクティビティ", shops_activity_path, data: {"turbolinks" => false} %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "マイページ", customer_my_page_path %>
@@ -280,22 +281,22 @@
       <% elsif admin_signed_in? %>
       <p class="text-sm-center">管理者専用 </p>
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", admin_shops_accommodation_path %>
+        <%= link_to "宿泊施設", admin_shops_accommodation_path, data: {"turbolinks" => false} %>
       </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ショッピングモール", admin_shops_shopping_mall_path %>
+        <%= link_to "ショッピングモール", admin_shops_shopping_mall_path, data: {"turbolinks" => false} %>
       </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "アクティビティ", admin_shops_activity_path %>
+        <%= link_to "アクティビティ", admin_shops_activity_path, data: {"turbolinks" => false} %>
        </button>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "ユーザー一覧", admin_users_path %>
         </button>
 
-        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+        <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ一覧", admin_inquiries_path %>
@@ -306,18 +307,18 @@
     <% else %>
 
       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path %>
+        <%= link_to "宿泊施設", shops_accommodation_path, data: {"turbolinks" => false} %>
       </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ショッピングモール", shops_shopping_mall_path %>
+        <%= link_to "ショッピングモール", shops_shopping_mall_path, data: {"turbolinks" => false} %>
       </button>
 
        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "アクティビティ", shops_activity_path %>
+        <%= link_to "アクティビティ", shops_activity_path, data: {"turbolinks" => false} %>
        </button>
 
-       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path %>
+       <%= link_to image_tag("inugo_logo.png", size: '150x120'), shops_accommodation_path, data: {"turbolinks" => false} %>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "新規登録", new_user_registration_path %>
