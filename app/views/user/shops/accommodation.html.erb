@@ -30,6 +30,7 @@ function initMap(){
   var marker = new google.maps.Marker({
     position: {lat: 35.171075437602035, lng:136.88147969620726},
     map: map,
+    draggable: true,
     title: "初期位置"
   });
 
@@ -39,8 +40,6 @@ function initMap(){
     　scaledSize: new google.maps.Size(40, 50)
     }
   });
-
-
 
 
   <% @shops.each do |shop| %>
