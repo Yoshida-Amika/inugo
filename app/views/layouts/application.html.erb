@@ -18,6 +18,7 @@
 
        <% if request.fullpath == "/customer/my_page" %>
 
+       <div class="d-flex align-items-end">
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "いいね一覧", nices_index_path %>
        </button>
@@ -29,6 +30,7 @@
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
        </button>
+      </div>
 
         <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
         <%= image_tag("inugo_logo.png", size: '150x120') %>
@@ -279,28 +281,41 @@
 
        <% else %>
 
-        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", shops_accommodation_path, data: {"turbolinks" => false} %>
-        </button>
+       <div class="d-flex bd-highlight mb-3">
+        <div class="me-auto p-2 bd-highlight">
+          <button class="btn btn-sm btn-outline-secondary" type="button">
+           <%= link_to "宿泊施設", shops_accommodation_path, data: {"turbolinks" => false} %>
+          </button>
+        </div>
 
-        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ショッピングモール", shops_shopping_mall_path, data: {"turbolinks" => false} %>
-        </button>
+        <div class="me-auto p-2 bd-highlight">
+          <button class="btn btn-sm btn-outline-secondary" type="button">
+           <%= link_to "ショッピングモール", shops_shopping_mall_path, data: {"turbolinks" => false} %>
+          </button>
+        </div>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "アクティビティ", shops_activity_path, data: {"turbolinks" => false} %>
-       </button>
+        <div class="me-auto p-2 bd-highlight">
+         <button class="btn btn-sm btn-outline-secondary" type="button">
+          <%= link_to "アクティビティ", shops_activity_path, data: {"turbolinks" => false} %>
+         </button>
+        </div>
 
        <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
        <%= image_tag("inugo_logo.png", size: '150x120') %>
        <% end %>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "マイページ", customer_my_page_path %>
-       </button>
+       <div class="p-2 bd-highlight">
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+         <%= link_to "マイページ", customer_my_page_path %>
+        </button>
+       </div>
 
-       <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% end %>
+       <div class="p-2 bd-highlight">
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <% end %>
+       </div>
+     </div>
+
 
       <% elsif admin_signed_in? %>
       <p class="text-sm-center">管理者専用 </p>
