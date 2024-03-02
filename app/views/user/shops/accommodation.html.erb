@@ -19,7 +19,6 @@
 let map
 
 function initMap(){
-
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -34,7 +33,7 @@ function initMap(){
     title: "初期位置"
   });
 
-      //マーカーのドロップ（ドラッグ終了）時のイベント
+  //マーカーのドロップ（ドラッグ終了）時のイベント
   var marker_lat =0;
   var marker_lng = 0;
   var markers = new Array();
@@ -110,9 +109,6 @@ function calc_distance(base, target){
   return km;
 }
 
-
-
-
 var geocoder
 
 //検索フォームのボタンが押された時に実行される
@@ -164,7 +160,7 @@ function codeAddress(){
         <% end %>
       <% end %>
       <% end %>
-      <span id="shop-<%= i %>"></span>km
+      直線距離<span id="shop-<%= i %>"></span>km
 
   </p>
 </h4>
