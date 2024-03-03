@@ -6,20 +6,50 @@
 <!---->
 
 <div class="d-flex bd-highlight">
-    <div class="p-2 flex-fill bd-highlight">
+  <div class="p-2 flex-fill bd-highlight">
 
-      <!--マップ表示-->
+    <!--マップ表示-->
+    <div class="border border-primary ">
       <div id='map'></div>
+    </div>
+    <span id="lat"></span>
+  </div>
 
-      <style>
-      #map {
-        height: 700px;
-        width: 1000px;
-      }
-      </style>
+  <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
+    <% @shops.each.with_index do |shop, i| %>
+      <div class="border rounded border-dark p-2 my-2 h4">
 
+        <p class="mb-3"><a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a></p>
+        <% if user_signed_in? %>
+          <% if current_user.already_revued?(shop) %>
+          　<!--お気に入り-->
+            <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
+              <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+            <% end %>
+          <% else %>
+            <!--お気に入り取り消し-->
+            <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+          <p>郵便番号: <%= shop.postal_code %></p>
+          <p>住所: <%= shop.address %></p>
+          <p>電話番号: <%= shop.telephone_number %></p>
+          <p class="mb-0">直線距離:<span id="shop-<%= i %>"></span>km</p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<script >
+<style>
+  #map {
+    height: 700px;
+    width: 1000px;
+  }
+</style>
+
+<script>
 let map
 
 function initMap(){
@@ -142,38 +172,6 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
-<span id="lat"></span>
-</div>
-
-<div class="overflow-auto p-2 flex-fill bd-highlight">
-    <% @shops.each.with_index do |shop, i| %>
-    <h4>
-      <p>
-        <a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a>
-        <% if user_signed_in? %>
-          <% if current_user.already_revued?(shop) %>
-          　<!--お気に入り-->
-            <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
-               <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-            <% end %>
-          <% else %>
-            <!--お気に入り取り消し-->
-            <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
-              <i class="fa-regular fa-star"></i>
-            <% end %>
-          <% end %>
 
 
-        <p>郵便番号: <%= shop.postal_code %></p>
-        <p>住所: <%= shop.address %></p>
-        <p>電話番号: <%= shop.telephone_number %></p>
-        直線距離:<span id="shop-<%= i %>"></span>km
-        <% end %>
-
-      </p>
-    </h4>
-<% end %>
-
-</div>
-</div>
 
