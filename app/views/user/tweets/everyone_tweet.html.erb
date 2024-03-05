@@ -1,24 +1,32 @@
-<h2>みんなの投稿</h2>
+<div class="d-flex justify-content-center">
+  <h2>みんなの投稿</h2>
+</div>
 
+<div class="d-flex justify-content-center">
+<table class="table">
 <% @tweets.each do |tweet| %>
 
-<h4>
-    <%= link_to tweet.user.nickname, other_path(tweet.user) %>
-    <%= image_tag tweet.get_image(200,200) %>
-    <%= tweet.sub_sentence %>
-    <% if current_user.already_niced?(tweet) %>
-    　<!--いいね-->
-      <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
-       <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
+  <tbody>
+    <tr>
+    <td><%= link_to tweet.user.nickname, other_path(tweet.user) %></td>
+    <td><%= image_tag tweet.get_image(200,200) %></td>
+    <td><%= tweet.sub_sentence %></td>
+    <td><%= tweet.created_at.strftime('%Y/%m/%d') %></td>
+    <td>
+      <% if current_user.already_niced?(tweet) %>
+      　<!--いいね-->
+        <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
+         <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
+        <% end %>
+      <% else %>
+        <!--いいね取り消し-->
+        <%= button_to tweet_nices_path(tweet), method: :post, style: "border: none; background: transparent" do %>
+        <i class="fa-regular fa-heart" style="color: #808080;"></i>
+        <% end %>
       <% end %>
-    <% else %>
-      <!--いいね取り消し-->
-      <%= button_to tweet_nices_path(tweet), method: :post, style: "border: none; background: transparent" do %>
-      <i class="fa-regular fa-heart" style="color: #808080;"></i>
-      <% end %>
-    <% end %>
-    <%= tweet.nices.count %>
-    <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
-</h4>
+      <%= tweet.nices.count %>
+    </td>
+    </tr>
 
 <% end %>
+</div>

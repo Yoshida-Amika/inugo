@@ -6,8 +6,8 @@
 <!---->
 
 <div class="d-flex bd-highlight">
+  
   <div class="p-2 flex-fill bd-highlight">
-
     <!--マップ表示-->
     <div class="border border-primary ">
       <div id='map'></div>
@@ -25,13 +25,13 @@
           　<!--お気に入り-->
             <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
               <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-            <% end %>
+          <% end %>
           <% else %>
             <!--お気に入り取り消し-->
             <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
               <i class="fa-regular fa-star"></i>
-            <% end %>
           <% end %>
+        <% end %>
         <% end %>
           <p>郵便番号: <%= shop.postal_code %></p>
           <p>住所: <%= shop.address %></p>

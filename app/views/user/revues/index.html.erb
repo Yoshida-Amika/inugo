@@ -1,22 +1,54 @@
 <h1>お気に入り店一覧</h1>
 
-<!--検索フォーム-->
-<input id="address" type="textbox" placeholder="住所検索">
-<input type="button" value="検索" onclick="codeAddress()">
-<!---->
+<div class="d-flex bd-highlight">
 
-<!--マップ表示-->
-<div id='map'></div>
+  <div class="p-2 flex-fill bd-highlight">
+    <!--マップ表示-->
+    <div class="border border-bark ">
+      <div id='map'></div>
+    </div>
+  </div>
+
+  <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
+    <% @revues.each do |revue| %>
+      <div class="border rounded border-dark p-2 my-2 h4">
+          <% revue.shop.genres.each do |genre| %>
+          <%= genre.name %>
+          <% end %>
+          <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a></p>
+          <p>郵便番号：<%= revue.shop.postal_code %></p>
+          <p>住所： <%= revue.shop.address %></p>
+          <p>電話番号: <%= revue.shop.telephone_number %></p>
+            <% if user_signed_in? %>
+              <% if current_user.already_revued?(revue.shop) %>
+            　  <!--お気に入り-->
+                <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
+                  <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+              <% end %>
+              <% else %>
+                <!--お気に入り取り消し-->
+                <%= button_to shop_revues_path(revue.shop), method: :post, style: "border: none; background: transparent" do %>
+                  <i class="fa-regular fa-star"></i>
+              <% end %>
+            <% end %>
+            <% end %>
+            </div>
+            <% end %>
+
+</div>
+</div>
+
+
 
 <style>
 #map {
-  height: 750px;
+  height: 700px;
   width: 1000px;
 }
 </style>
 
 <script>
-var map
+let map
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
@@ -71,32 +103,3 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
-
-<% @revues.each do |revue| %>
-
-<h4>
-  <p>
-    <% revue.shop.genres.each do |genre| %>
-    <%= genre.name %>
-    <% end %>
-    <a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
-    郵便番号：<%= revue.shop.postal_code %>
-    住所： <%= revue.shop.address %>
-    電話番号: <%= revue.shop.telephone_number %>
-      <% if user_signed_in? %>
-      <% if current_user.already_revued?(revue.shop) %>
-      　<!--お気に入り-->
-        <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
-           <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-        <% end %>
-      <% else %>
-        <!--お気に入り取り消し-->
-        <%= button_to shop_revues_path(revue.shop), method: :post, style: "border: none; background: transparent" do %>
-          <i class="fa-regular fa-star"></i>
-        <% end %>
-      <% end %>
-      <% end %>
-  </p>
-</h4>
-
-<% end %>
