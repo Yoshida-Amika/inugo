@@ -20,35 +20,67 @@
 
        <% if request.fullpath == "/customer/my_page" %>
 
-       <div class="d-flex align-items-end">
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "いいね一覧", nices_index_path %>
-       </button>
+       <div class="app-logo-wrapper d-flex justify-content-between mb-0">
+        <div class="d-flex flex-row">
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "お気に入り店一覧", favorite_path %>
-       </button>
-
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "フォロー一覧",  followings_user_path(current_user) %>
-       </button>
-      </div>
-
-        <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
-        <%= image_tag("inugo_logo.png", size: '150x120') %>
+       <div class="mt-5 bd-highlight">
+        <%= link_to nices_index_path, class: "btn btn-sm btn-outline-secondary", data: {"turbolinks" => false} do %>
+        <h4>
+         いいね一覧
+        </h4>
         <% end %>
+       </div>
+
+       <div class="mt-5 bd-highlight">
+        <%= link_to favorite_path, class: "btn btn-sm btn-outline-secondary", data: {"turbolinks" => false} do %>
+       <h4>
+        お気に入り店一覧
+       </h4>
+       <% end %>
+       </div>
+
+       <div class="mt-5 bd-highlight">
+        <%= link_to followings_user_path(current_user), class: "btn btn-sm btn-outline-secondary", data: {"turbolinks" => false} do %>
+       <h4>
+        フォロー一覧
+       </h4>
+       <% end %>
+      </div>
+     </div>
+
+        <div class="app-logo">
+       <!--CSSで真ん中にアブソルートする-->
+         <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
+         <%= image_tag("inugo_logo.png", size: '160x130') %>
+         <% end %>
+       </div>
 
         <!--data: {"turbolinks" => false}  ターボリンクスを使う-->
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "問い合わせ", inquiries_path %>
-       </button>
+       <div class=" d-flex flex-row">
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "マイページ", customer_my_page_path %>
-       </button>
+       <div class="mt-5 bd-highlight">
+        <%= link_to inquiries_path, class: "btn btn-sm btn-outline-secondary", data: {"turbolinks" => false} do %>
+       <h4>
+        問い合わせ
+       </h4>
+       <% end %>
+       </div>
 
-        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+       <div class="mt-5 bd-highlight">
+        <%= link_to customer_my_page_path, class: "btn btn-sm btn-outline-secondary", data: {"turbolinks" => false} do %>
+       <h4>
+        マイページ
+       </h4>
+       <% end %>
+       </div>
+
+
+         <h4>
+           <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-lg text-dark btn-outline-danger" %>
+         </h4>
+
+
 
         <% elsif request.fullpath == "/follows" %>
 
