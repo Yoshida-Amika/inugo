@@ -2,19 +2,21 @@
 <html>
   <head>
     <title>Inugo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport"  content="width=device-width, height=500px ,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <script src="https://kit.fontawesome.com/7c1e3d1426.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <% if user_signed_in? %>
 
-      <nav class="navbar navbar-light bg-light p-0">
+      <nav class="navbar mb-4 p-0">
 
        <% if request.fullpath == "/customer/my_page" %>
 
@@ -250,6 +252,7 @@
 
          <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
 
+
        <% elsif request.fullpath == followings_user_path(current_user) %>
 
          <button class="btn btn-sm btn-outline-secondary" type="button">
@@ -282,29 +285,31 @@
        <% else %>
        <div class="app-logo-wrapper d-flex justify-content-between mb-0">
         <div class="d-flex flex-row">
+
           <div class="mt-5 bd-highlight">
-            <button class="btn btn-sm  btn-outline-primary " type="button">
+            <%= link_to shops_accommodation_path, class: "btn btn-sm nav-link text-dark btn-outline-primary " , data: {"turbolinks" => false} do %>
              <h4>
-              <%= link_to "宿泊施設", shops_accommodation_path, data: {"turbolinks" => false} %>
+                宿泊施設
              </h4>
-            </button>
+            <% end %>
           </div>
 
           <div class="mt-5 bd-highlight ">
-            <button class="btn btn-sm btn-outline-warning" type="button">
-             <h4>
-              <%= link_to "ショッピングモール", shops_shopping_mall_path, data: {"turbolinks" => false} %>
-             </h4>
-            </button>
-          </div>
-
-          <div class="mt-5 bd-highlight ">
-           <button class="btn btn-sm btn-outline-success" type="button">
+            <%= link_to shops_shopping_mall_path, class: "btn btn-sm nav-link text-dark btn-outline-warning", data: {"turbolinks" => false} do %>
             <h4>
-             <%= link_to "アクティビティ", shops_activity_path, data: {"turbolinks" => false} %>
+             ショッピングモール
             </h4>
-           </button>
+            <% end %>
           </div>
+
+          <div class="mt-5 bd-highlight ">
+            <%= link_to shops_activity_path, class: "btn btn-sm nav-link text-dark btn-outline-success", data: {"turbolinks" => false} do %>
+            <h4>
+             アクティビティ
+            </h4>
+            <% end %>
+          </div>
+
          </div>
        </div>
 
@@ -317,20 +322,21 @@
 
       <div class=" d-flex flex-row">
 
-       <div class="mt-5 bd-highlight">
-        <h4>
-         <%= button_to "ログアウト", destroy_user_session_path, method: :delete , class: "btn btn-lg btn-outline-danger"%>
-        </h4>
-        <% end %>
-       </div>
+        <div class="mt-5 bd-highlight">
+          <%= link_to customer_my_page_path, class: "btn btn-sm nav-link text-dark btn-outline-info" do%>
+          <h4>
+          マイページ
+          </h4>
+          <% end %>
+        </div>
 
-       <div class="mt-5 bd-highlight">
-        <button class="btn btn-sm btn-outline-info" type="button">
+        <div class="mt-5 bd-highlight">
          <h4>
-          <%= link_to "マイページ", customer_my_page_path %>
+          <%= button_to "ログアウト", destroy_user_session_path, method: :delete , class: "btn btn-lg text-dark btn-outline-danger"%>
          </h4>
-        </button>
-       </div>
+         <% end %>
+        </div>
+
       </div>
 
 

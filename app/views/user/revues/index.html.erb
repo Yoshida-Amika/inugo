@@ -12,14 +12,13 @@
   <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
     <% @revues.each do |revue| %>
       <div class="border rounded border-dark p-2 my-2 h4">
-          <% revue.shop.genres.each do |genre| %>
-          <%= genre.name %>
+          <span class="border border-dark ">
+            <% revue.shop.genres.each do |genre| %>
+            <%= genre.name %>
+          </span>
           <% end %>
-          <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a></p>
-          <p>郵便番号：<%= revue.shop.postal_code %></p>
-          <p>住所： <%= revue.shop.address %></p>
-          <p>電話番号: <%= revue.shop.telephone_number %></p>
-            <% if user_signed_in? %>
+          <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
+          <% if user_signed_in? %>
               <% if current_user.already_revued?(revue.shop) %>
             　  <!--お気に入り-->
                 <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
@@ -32,6 +31,11 @@
               <% end %>
             <% end %>
             <% end %>
+          </p>
+          <p>郵便番号：<%= revue.shop.postal_code %></p>
+          <p>住所： <%= revue.shop.address %></p>
+          <p>電話番号: <%= revue.shop.telephone_number %></p>
+
             </div>
             <% end %>
 
