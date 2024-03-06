@@ -5,6 +5,7 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     @tweets = @user.tweets
     @follow = Follow.new
+    @users = @user.user_followings
   end
 
 

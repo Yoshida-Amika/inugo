@@ -1,18 +1,54 @@
-<h2>アクティビティ</h2>
+<div class="d-flex justify-content-center">
+  <div class="mx-5">
+    <h1>アクティビティ</h1>
+  </div>
+  <!--検索フォーム-->
+  <input id="address" type="textbox" placeholder="住所検索">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <!---->
+</div>
+<div class="d-flex bd-highlight">
 
-<!--検索フォーム-->
-<input id="address" type="textbox" placeholder="住所検索">
-<input type="button" value="検索" onclick="codeAddress()">
-<!---->
+  <div class="p-2 flex-fill bd-highlight">
+    <!--マップ表示-->
+    <div class="border border-primary ">
+      <div id='map'></div>
+    </div>
+    <span id="lat"></span>
+  </div>
 
-<!--マップ表示-->
-<div id='map'></div>
+  <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
+    <% @shops.each.with_index do |shop, i| %>
+      <div class="border rounded border-dark p-2 my-2 h4">
+
+        <p class="mb-3"><a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a></p>
+        <% if user_signed_in? %>
+          <% if current_user.already_revued?(shop) %>
+          　<!--お気に入り-->
+            <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
+              <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+          <% end %>
+          <% else %>
+            <!--お気に入り取り消し-->
+            <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
+              <i class="fa-regular fa-star"></i>
+          <% end %>
+        <% end %>
+        <% end %>
+          <p>郵便番号: <%= shop.postal_code %></p>
+          <p>住所: <%= shop.address %></p>
+          <p>電話番号: <%= shop.telephone_number %></p>
+          <p class="mb-0">直線距離:<span id="shop-<%= i %>"></span>km</p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <style>
-#map {
-  height: 750px;
-  width: 1000px;
-}
+  #map {
+    height: 700px;
+    width: 1000px;
+  }
 </style>
 
 <script>
@@ -33,6 +69,7 @@ function initMap(){
     title: "初期位置"
   });
 
+  //マーカーのドロップ（ドラッグ終了）時のイベント
   var marker_lat =0;
   var marker_lng = 0;
   var markers = new Array();
@@ -78,35 +115,35 @@ function initMap(){
   <% end %>
 }
 
-  function haversine_distance(mk1, mk2) {
-        var R = 6371.0710; // km表示
-        var rlat1 = mk1.lat * (Math.PI/180);
-         // Convert degrees to radians
-        var rlat2 = mk2.lat * (Math.PI/180);
-         // Convert degrees to radians
-        var difflat = rlat2-rlat1; // Radian difference (latitudes)
-        var difflon = (mk2.lng-mk1.lng)
-                    * (Math.PI/180); // Radian difference (longitudes)
+function haversine_distance(mk1, mk2) {
+      var R = 6371.0710; // km表示
+      var rlat1 = mk1.lat * (Math.PI/180);
+       // Convert degrees to radians
+      var rlat2 = mk2.lat * (Math.PI/180);
+       // Convert degrees to radians
+      var difflat = rlat2-rlat1; // Radian difference (latitudes)
+      var difflon = (mk2.lng-mk1.lng)
+                  * (Math.PI/180); // Radian difference (longitudes)
 
-        var d = 2 * R
-        * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)
-        +Math.cos(rlat1)*Math.cos(rlat2)
-        *Math.sin(difflon/2)*Math.sin(difflon/2)));
-        return +parseFloat(d).toFixed(2);
-    }
-
-  function calc_distance(base, target){
-    let km = 0;
-    console.log(base.lat);
-    console.log(base.lng);
-
-    console.log(target.lat);
-    console.log(target.lng);
-
-    km = haversine_distance(base, target)
-
-    return km;
+      var d = 2 * R
+      * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)
+      +Math.cos(rlat1)*Math.cos(rlat2)
+      *Math.sin(difflon/2)*Math.sin(difflon/2)));
+      return +parseFloat(d).toFixed(2);
   }
+
+function calc_distance(base, target){
+  let km = 0;
+  console.log(base.lat);
+  console.log(base.lng);
+
+  console.log(target.lat);
+  console.log(target.lng);
+
+  km = haversine_distance(base, target)
+
+  return km;
+}
 
 var geocoder
 
@@ -133,35 +170,7 @@ function codeAddress(){
     }
   });
 }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
-
-<span id="lat"></span>
-<% @shops.each.with_index do |shop, i| %>
-
-
-<h4>
-  <p>
-    <a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a>
-    郵便番号：<%= shop.postal_code %>
-    住所： <%= shop.address %>
-    電話番号: <%= shop.telephone_number %>
-    <% if user_signed_in? %>
-      <% if current_user.already_revued?(shop) %>
-      　<!--お気に入り-->
-        <%= button_to shop_revues_path(shop), method: :delete, style: "border: none; background: transparent"  do %>
-           <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-        <% end %>
-      <% else %>
-        <!--お気に入り取り消し-->
-        <%= button_to shop_revues_path(shop), method: :post, style: "border: none; background: transparent" do %>
-          <i class="fa-regular fa-star"></i>
-        <% end %>
-      <% end %>
-      <% end %>
-      直線距離<span id="shop-<%= i %>"></span>km
-  </p>
-</h4>
-
-<% end %>

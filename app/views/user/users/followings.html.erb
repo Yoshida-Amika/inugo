@@ -2,22 +2,15 @@
 
 <% if @users.exists? %>
   <% @users.each do |user| %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= link_to user.nickname, other_path(user) %></td>
-        </tr>
-      </tbody>
-    </table>
+
+    <h3>name</h3>
+    <h3><%= link_to user.nickname, other_path(user) %></h3>
   <% end %>
 
-<% else %>
-  <p>ユーザーはいません</p>
+  <% else %>
+    <p>ユーザーはいません</p>
 <% end %>
+
+<h3>フォローユーザーの日記</h3>
+<h3>フォローユーザーをクリックして</h3>
+<h3>日記を覗いてみよう！</h3>
