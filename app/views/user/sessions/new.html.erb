@@ -1,22 +1,22 @@
-<div class = "col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+<div class = "border border-dark col-md-5 col-sm-10 mx-2 mx-sm-auto text-center rounded px-0 my-5">
 <h2>ログイン</h2>
 
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
+  <%= form_with model: @user, url: user_session_path do |f| %>
 
-    <label class="col-sm-2">メールアドレス</label><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <label>メールアドレス</label><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <p><label class="col-sm-2">パスワード</label><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <p><label>パスワード</label><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
 </div>
 
 

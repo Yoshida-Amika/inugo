@@ -1,5 +1,5 @@
 
-<div class = "col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
+<div class = "border border-dark col-md-5 col-sm-10 mx-2 mx-sm-auto text-center rounded px-0 my-5">
 
 <h1>新規登録</h1>
 
@@ -8,32 +8,31 @@
 
 
   <div class="field">
-    <label class="col-sm-2">ニックネーム</label><br />
+    <label>ニックネーム</label><br />
     <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
   </div>
 
-
-
   <div class="field">
-   <label class="col-sm-2">メールアドレス</label><br />
+    <label>メールアドレス</label><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <a><label class="col-sm-2">パスワード（６文字以上）</label>
+    <a><label>パスワード(６文字以上)</label>
     <% if @minimum_password_length %>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <label class="col-sm-2">パスワード（確認用）</label><br />
+    <label>パスワード（確認用）</label><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
     <%= f.submit "新規登録" %>
   </div>
+
 <% end %>
 </div>
 
