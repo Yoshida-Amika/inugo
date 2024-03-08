@@ -3,16 +3,15 @@
 </div>
 
 <div class="d-flex justify-content-center">
-<table class="table">
 <% @tweets.each do |tweet| %>
+<div class="container border rounded border-dark p-2 my-2 h4 "style="width:500px;">
+<div class="row row-cols-3">
+  <div class="col">
+    <%= link_to tweet.user.nickname, other_path(tweet.user) %>
+    <%= image_tag tweet.get_image(200,200) %>
+    <%= tweet.sub_sentence %>
+    <%= tweet.created_at.strftime('%Y/%m/%d') %>
 
-  <tbody>
-    <tr>
-    <td><%= link_to tweet.user.nickname, other_path(tweet.user) %></td>
-    <td><%= image_tag tweet.get_image(200,200) %></td>
-    <td><%= tweet.sub_sentence %></td>
-    <td><%= tweet.created_at.strftime('%Y/%m/%d') %></td>
-    <td>
       <% if current_user.already_niced?(tweet) %>
       　<!--いいね-->
         <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
@@ -25,8 +24,10 @@
         <% end %>
       <% end %>
       <%= tweet.nices.count %>
-    </td>
-    </tr>
-
+      </div>
+</div>
+</div>
 <% end %>
+</div>
+</div>
 </div>

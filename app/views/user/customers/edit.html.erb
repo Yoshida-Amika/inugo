@@ -1,15 +1,19 @@
+<div class = "border border-dark col-md-5 col-sm-10 mx-2 mx-sm-auto text-center rounded px-1 my-5">
 <h1>登録情報編集</h1>
+
 
 <%= form_with model: @user, url: customer_path(@user) do |f| %>
 
-      <p><label for="inputName" class="col-sm-2">ニックネーム</label>
+      <p><label for="inputName" class="field">ニックネーム</label>
             <%= f.text_field :nickname, autofocus: true, id:"inputLastnickname", placeholder:"ニックネーム"%>
       </p>
 
-      <p><label for="inputName" class="col-sm-2">メールアドレス</label>
+      <p><label for="inputName" class="field">メールアドレス</label>
             <%= f.text_field :email, autofocus: true, id:"inputLastemail", placeholder:"メールアドレス"%>
       </p>
 
-
+<div class="actions">
 <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+</div>
 <% end %>
+</div>
