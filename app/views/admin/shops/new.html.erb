@@ -1,3 +1,4 @@
+<div class = "border border-dark col-md-5 col-10 mx-2 mx-sm-auto text-center rounded px-1 my-5">
 <h1>お店新規登録</h1>
 
 <%= form_with model: @shop, url: admin_shops_path do |f| %>
@@ -12,16 +13,16 @@
 </h4>
 
 <p><label for="inputName" class="col-sm-2">店名</label>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :size=>"60" %>
      </p>
 <p><label for="inputName" class="col-sm-2">お店のURL</label>
-        <%= f.text_area :site_url %>
+        <%= f.text_field :site_url, :size=>"60" %>
      </p>
 <p><label for="inputName" class="col-sm-2">郵便番号</label>
         <%= f.text_field :postal_code %>
      </p>
 <p><label for="inputName" class="col-sm-2">住所</label>
-        <%= f.text_area :address %>
+        <%= f.text_area :address, :size=>"60" %>
      </p>
 <p><label for="inputName" class="col-sm-2">電話番号</label>
         <%= f.text_field :telephone_number %>
@@ -32,3 +33,4 @@
 <%= f.submit '追加', class:"btn btn-success" %>
 
 <% end %>
+</div>

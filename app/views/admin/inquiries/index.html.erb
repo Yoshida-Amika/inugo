@@ -1,27 +1,37 @@
-<h1>問い合わせ一覧</h1>
+<div class = " mx-sm-auto text-center rounded ">
+  <h1>問い合わせ一覧</h1>
+</div>
 
-<div class="col-9">
-<table class="table">
-    <thead>
-        <tr class="table-secondary">
-            <th scope = "col">会員ID</th>
-            <th scope = "col">ニックネーム</th>
-            <th scope = "col">メールアドレス</th>
-            <th scope = "col">内容</th>
-            <th scope = "col"> </th>
-        </tr>
-    </thead>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    
+    <div class="col-9">
+      <table class="table">
+        <thead>
+            <tr class="table-secondary">
+                <th scope = "col">会員ID</th>
+                <th scope = "col">ニックネーム</th>
+                <th scope = "col">メールアドレス</th>
+                <th scope = "col">内容</th>
+                <th scope = "col"> </th>
+            </tr>
+        </thead>
 
-    <tbody>
-      <% @inquiry.each do |inquiry| %>
-      <tr>
-        <td><%= inquiry.user.id %></td>
-        <td><%= link_to inquiry.user.nickname, admin_user_path(inquiry.user.id) %></td>
-        <td><%= inquiry.user.email %></td>
-        <td><%= inquiry.opinion %></td>
-        <td><%= link_to "削除", admin_inquiry_path(inquiry.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-      </tr>
-      <% end %>
-</tbody>
-</table>
+        <tbody>
+          <% @inquiry.each do |inquiry| %>
+            <tr>
+              <td><%= inquiry.user.id %></td>
+              <td><%= link_to inquiry.user.nickname, admin_user_path(inquiry.user.id) %></td>
+              <td><%= inquiry.user.email %></td>
+              <td><%= inquiry.opinion %></td>
+              <td><%= link_to "削除", admin_inquiry_path(inquiry.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="col"></div>
+  </div>
 </div>

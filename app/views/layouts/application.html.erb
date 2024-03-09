@@ -680,6 +680,7 @@
 
 
       <% elsif admin_signed_in? %>
+
       <p class="text-sm-center">管理者専用 </p>
        <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "宿泊施設", admin_shops_accommodation_path, data: {"turbolinks" => false} %>
@@ -693,20 +694,21 @@
         <%= link_to "アクティビティ", admin_shops_activity_path, data: {"turbolinks" => false} %>
        </button>
 
-        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ユーザー一覧", admin_users_path %>
-        </button>
-
         <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
         <%= image_tag("inugo_logo.png", size: '150x120') %>
         <% end %>
 
+        <button class="btn btn-sm btn-outline-secondary" type="button">
+        <%= link_to "ユーザー一覧", admin_users_path %>
+        </button>
 
         <button class="btn btn-sm btn-outline-secondary" type="button">
         <%= link_to "問い合わせ一覧", admin_inquiries_path %>
         </button>
 
        <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
+
 
     <% else %>
 
