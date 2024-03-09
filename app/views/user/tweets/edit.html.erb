@@ -1,19 +1,21 @@
+<div class = "border border-dark col-md-5 col-10 mx-2 mx-sm-auto text-center rounded px-1 my-5">
 <h2>投稿編集</h2>
 <% if @tweet.user == current_user %>
- <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_path" rel="nofollow" data-method="delete" href="/tweets/<%= @tweet.id %>">削除</a>
+
 <% end %>
 
 <%= form_with model: @tweet, url: tweet_path  do |f| %>
 
- <p>
-   <label for="inputImage" class="col-sm-2">画像</label>
-   <%= f.file_field :image, placeholder: "画像", accept: "image/*" %>
- </p>
- <p>
-   <label for="inputName" class="col-sm-2">内容文</label>
-   <%= f.text_area :sub_sentence , id:"inputName", placeholder:"内容文"%>
- </p>
 
- <%= f.submit "変更を保存", class:"btn btn-success" %>
+   <label for="inputImage" class="col-sm-2">画像</label>
+   <%= f.file_field :image, placeholder: "画像", accept: "image/*" %><br/>
+,
+   <label for="inputName" class="col-sm-2">内容文</label>
+   <%= f.text_area :sub_sentence , id:"inputName", placeholder:"内容文", class: 'form-control',size: "10x5"%>
+
+
+ <%= f.submit "変更を保存", class:"btn btn-success mr-5" %>
+ <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_path" rel="nofollow" data-method="delete" href="/tweets/<%= @tweet.id %>">削除</a>
 
  <% end %>
+ </div>

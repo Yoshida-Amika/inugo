@@ -12,21 +12,25 @@
             <td class="table-active">会員ID </td>
             <td><%= @user.id %></td>
           </tr>
-          <tr>
 
           <tr>
             <td class="table-active">ニックネーム</td>
             <td><%= @user.nickname %></td>
           </tr>
 
-          </tr>
+          <tr>
             <td class="table-active">メールアドレス</td>
             <td><%= @user.email %></td>
+          </tr>
         </tbody>
       </table>
 
-      <%= link_to "編集", edit_customer_path(current_user) %>
-      <%= link_to "退会する", customer_confirmation_path(current_user) %>
+      <%= link_to edit_customer_path(current_user), class: "btn btn-sm nav-link btn-outline-secondary" do %>
+        <h3>編集</h3>
+      <% end %>
+      <%= link_to customer_confirmation_path(current_user), class: "btn btn-sm nav-link btn-outline-secondary" do %>
+        <h3>退会する</h3>
+      <% end %>
 
     </div>
   </div>
@@ -42,7 +46,9 @@
         <div class="border rounded border-dark p-2 my-2 h4 "style="width:500px;">
           <p>
             <%= image_tag tweet.get_image(200,200) %>
-            <%= tweet.sub_sentence %>
+            <div class="font-weight-bold">
+              <%= tweet.sub_sentence %>
+            </div>
             <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
             <%= link_to "編集", edit_tweet_path(tweet.id) %>
           </p>

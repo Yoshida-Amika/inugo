@@ -10,14 +10,14 @@ has_one_attached :image
   image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
     image.variant(resize: "#{width}x#{height}").processed
-  end
+ end
 
   has_many :nices, :dependent => :destroy
   has_many :niced_users, through: :nices, source: :user
 
-def niced_by?(user)
-    nices.exists?(user_id: user.id)
- end
+  def niced_by?(user)
+      nices.exists?(user_id: user.id)
+  end
 
 
 

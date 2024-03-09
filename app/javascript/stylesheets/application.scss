@@ -9,6 +9,7 @@
     position: relative;
 }
 
+// ヘッダーのロゴを真ん中にする
 .app-logo{
     position: absolute;
     top: 0;
@@ -16,4 +17,13 @@
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
+}
+
+// みんなの投稿のスクロールを縦限定に指定
+.overflow-y-auto{
+    overflow-y: auto;
+}
+// 横スクロールは削除
+.overflow-x-hidden{
+    overflow-x: hidden;
 }
