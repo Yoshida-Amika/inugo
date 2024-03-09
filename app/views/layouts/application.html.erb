@@ -681,34 +681,66 @@
 
       <% elsif admin_signed_in? %>
 
-      <p class="text-sm-center">管理者専用 </p>
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "宿泊施設", admin_shops_accommodation_path, data: {"turbolinks" => false} %>
-      </button>
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ショッピングモール", admin_shops_shopping_mall_path, data: {"turbolinks" => false} %>
-      </button>
+      <div class="app-logo-wrapper d-flex justify-content-between mb-0">
+        <div class="d-flex flex-row">
 
-       <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "アクティビティ", admin_shops_activity_path, data: {"turbolinks" => false} %>
-       </button>
+          <div class="mt-5 bd-highlight">
+            <%= link_to admin_shops_accommodation_path, class: "btn btn-sm nav-link text-dark btn-outline-primary ", data: {"turbolinks" => false} do %>
+             <h4>
+                宿泊施設
+             </h4>
+            <% end %>
+          </div>
 
-        <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
-        <%= image_tag("inugo_logo.png", size: '150x120') %>
-        <% end %>
+          <div class="mt-5 bd-highlight ">
+            <%= link_to admin_shops_shopping_mall_path, class: "btn btn-sm nav-link text-dark btn-outline-warning", data: {"turbolinks" => false} do %>
+             <h4>
+              ショッピングモール
+             </h4>
+            <% end %>
+          </div>
 
-        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "ユーザー一覧", admin_users_path %>
-        </button>
+          <div class="mt-5 bd-highlight ">
+            <%= link_to admin_shops_activity_path, class: "btn btn-sm nav-link text-dark btn-outline-success", data: {"turbolinks" => false} do %>
+             <h4>
+              アクティビティ
+             </h4>
+            <% end %>
+          </div>
 
-        <button class="btn btn-sm btn-outline-secondary" type="button">
-        <%= link_to "問い合わせ一覧", admin_inquiries_path %>
-        </button>
+         </div>
+       </div>
 
-       <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+       <div class="app-logo">
+       <!--CSSで真ん中にアブソルートする-->
+         <%= link_to shops_accommodation_path, data: {"turbolinks" => false} do %>
+         <%= image_tag("inugo_logo.png", size: '160x130') %>
+         <% end %>
+       </div>
+
+       <div class="d-flex flex-row">
+
+         <div class="mt-5 bd-highlight ">
+          <%= link_to admin_users_path, class: "btn btn-sm btn-outline-secondary" do %>
+           <h4>
+            ユーザー一覧
+           </h4>
+          <% end %>
+         </div>
+
+         <div class="mt-5 bd-highlight ">
+          <%= link_to admin_inquiries_path, class: "btn btn-sm btn-outline-secondary" do %>
+           <h4>
+            問い合わせ一覧
+           </h4>
+          <% end %>
+         </div>
 
 
+         <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
+        </div>
 
     <% else %>
 
