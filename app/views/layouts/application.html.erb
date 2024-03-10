@@ -737,8 +737,12 @@
           <% end %>
          </div>
 
+         <div class="mt-5 bd-highlight">
+         <h4>
+         <%= button_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-lg text-dark btn-outline-danger" %>
+         </h4>
 
-         <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+         </div>
 
         </div>
 

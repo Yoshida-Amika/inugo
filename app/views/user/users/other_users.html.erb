@@ -14,43 +14,43 @@
         </tbody>
       </table>
 
-<% if current_user.user_following?(@user) %>
-  <%= link_to "フォロー外す", user_follows_path(@user), method: :delete %>
-<% else %>
-  <%= link_to "フォローする", user_follows_path(@user), method: :post %>
-<% end %>
-
-</div>
-  </div>
-
-<div class=" mt-3 overflow-auto bd-highlight">
-<h2>投稿一覧</h2>
-
-<div class=" mt-3 overflow-auto bd-highlight" style="height:600px;">
-<% @tweets.each do |tweet| %>
-  <div class="border rounded border-dark p-2 my-2 h4 "style="width:500px;">
-  <h4>
-
-      <%= image_tag tweet.get_image(200,200) %>
-      <div class="font-weight-bold">
-        <%= tweet.sub_sentence %>
-      </div>
-      <% if current_user.already_niced?(tweet) %>
-      　<!--いいね-->
-        <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
-         <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
-        <% end %>
+      <% if current_user.user_following?(@user) %>
+        <%= link_to "フォロー外す", user_follows_path(@user), method: :delete %>
       <% else %>
-        <!--いいね取り消し-->
-        <%= button_to tweet_nices_path(tweet), method: :post, style: "border: none; background: transparent" do %>
-        <i class="fa-regular fa-heart" style="color: #808080;"></i>
-        <% end %>
+        <%= link_to "フォローする", user_follows_path(@user), method: :post %>
       <% end %>
-      <%= tweet.nices.count %>
-      <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
-  </h4>
+
+    </div>
   </div>
-<% end %>
+
+  <div class=" mt-3 overflow-auto bd-highlight">
+  <h2>投稿一覧</h2>
+
+    <div class=" mt-3 overflow-auto bd-highlight" style="height:600px;">
+    <% @tweets.each do |tweet| %>
+      <div class="border rounded border-dark p-2 my-2 h4 "style="width:500px;">
+      <h4>
+    
+          <%= image_tag tweet.get_image(200,200) %>
+          <div class="font-weight-bold">
+            <%= tweet.sub_sentence %>
+          </div>
+          <% if current_user.already_niced?(tweet) %>
+          　<!--いいね-->
+            <%= button_to tweet_nices_path(tweet), method: :delete, style: "border: none; background: transparent"  do %>
+             <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
+            <% end %>
+          <% else %>
+            <!--いいね取り消し-->
+            <%= button_to tweet_nices_path(tweet), method: :post, style: "border: none; background: transparent" do %>
+            <i class="fa-regular fa-heart" style="color: #808080;"></i>
+            <% end %>
+          <% end %>
+          <%= tweet.nices.count %>
+          <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
+      </h4>
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>
-  </div>
-  </div>
