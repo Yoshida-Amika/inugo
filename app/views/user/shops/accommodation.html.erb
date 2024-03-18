@@ -71,7 +71,7 @@ function initMap(){
   });
 
   //マーカーのドロップ（ドラッグ終了）時のイベント
-  var marker_lat =0;
+  var marker_lat = 0;
   var marker_lng = 0;
   var markers = new Array();
 
@@ -114,6 +114,14 @@ function initMap(){
       })();
     <% end %>
   <% end %>
+
+  marker_lat = 35.171075437602035;
+      marker_lng = 136.88147969620726;
+      for( var i = 0; i < markers.length; i++ ){
+        var result_distance = calc_distance({lat: marker_lat, lng: marker_lng},markers[i]);
+        document.getElementById("shop-"+i).innerHTML = result_distance;
+      }
+
 }
 
 function haversine_distance(mk1, mk2) {
