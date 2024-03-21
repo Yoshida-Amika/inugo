@@ -114,6 +114,14 @@ function initMap(){
       })();
     <% end %>
   <% end %>
+
+  // 初期位置でも距離を算出する
+  marker_lat = 35.171075437602035;
+      marker_lng = 136.88147969620726;
+      for( var i = 0; i < markers.length; i++ ){
+        var result_distance = calc_distance({lat: marker_lat, lng: marker_lng},markers[i]);
+        document.getElementById("shop-"+i).innerHTML = result_distance;
+      }
 }
 
 function haversine_distance(mk1, mk2) {

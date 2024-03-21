@@ -16,6 +16,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
       t.datetime :remember_created_at
       t.string :nickname, null: false
 
+      t.string :testimonials, null: false, default: ""
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

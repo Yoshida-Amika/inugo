@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2024_01_29_111754) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nickname", null: false
+    t.string "testimonials", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

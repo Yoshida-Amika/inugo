@@ -12,8 +12,13 @@
             <%= f.text_field :email, autofocus: true, id:"inputLastemail", placeholder:"メールアドレス"%>
       </p>
 
+      <p><label for="inputName" class="field">自己紹介文</label>
+            <%= f.text_area :testimonials, autofocus: true, id:"inputLastemail", placeholder:"自己紹介文", class: 'form-control',size: "10x5"%>
+      </p>
+
 <div class="actions">
 <%= f.submit "編集内容を保存", class:"btn btn-success" %>
 </div>
 <% end %>
 </div>
+
