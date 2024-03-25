@@ -1,3 +1,4 @@
+
 <div class="d-flex justify-content-center">
   <div class="mx-5">
       <h1>宿泊施設</h1>
@@ -8,11 +9,11 @@
   <!---->
 </div>
 
-<div class="d-flex bd-highlight">
+<div class="d-flex bd-highlight ">
 
-  <div class="p-2 flex-fill bd-highlight">
+  <div class="p-2 flex-fill border border-primary border-5">
     <!--マップ表示-->
-    <div class="border border-primary ">
+    <div class="border">
       <div id='map'></div>
     </div>
     <span id="lat"></span>
@@ -44,6 +45,7 @@
     <% end %>
   </div>
 </div>
+
 
 <style>
   #map {
@@ -115,7 +117,7 @@ function initMap(){
     <% end %>
   <% end %>
 
-// 初期位置でも距離を算出する　
+// 初期位置でも距離を算出する
   marker_lat = 35.171075437602035;
       marker_lng = 136.88147969620726;
       for( var i = 0; i < markers.length; i++ ){

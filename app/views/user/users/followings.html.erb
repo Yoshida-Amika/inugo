@@ -9,25 +9,26 @@
 <div class="d-flex justify-content-center">
   <h3>フォローユーザーをクリックして日記を覗いてみよう!</h3>
 </div>
-  <div class="border rounded border-dark p-2 my-2 h4" style="text-align: center; width:500px;">
+  <div class="border rounded border-dark p-2 my-2 h4" style="text-align: center;">
     <table class="table">
-
-      <% @users.each do |user| %>
-
         <tbody>
           <tr>
             <td>名前</td>
             <td>自己紹介文</td>
           </tr>
+
+      <% @users.each do |user| %>
+
           <tr>
-              <td><%= link_to user.nickname, other_path(user) %></td>
-              <td><%= user.testimonials %></td>
+            <td><%= link_to user.nickname, other_path(user) %></td>
+            <td><%= user.testimonials %></td>
           </tr>
+      <% end %>
         </tbody>
     </table>
 
 
-    <% end %>
+
 
     <% else %>
       <p>ユーザーはいません</p>
