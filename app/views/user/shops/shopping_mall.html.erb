@@ -1,5 +1,6 @@
+<div class="shoppong-background">
 <div class="d-flex justify-content-center">
-  <div class="mx-5">
+  <div class="mx-5 bg-white">
       <h1>ショッピングモール</h1>
   </div>
   <!--検索フォーム-->
@@ -12,7 +13,7 @@
 
   <div class="p-2 flex-fill bd-highlight">
     <!--マップ表示-->
-    <div class="border border-warning border-5">
+    <div class="p-2 flex-fill">
       <div id='map'></div>
     </div>
     <span id="lat"></span>
@@ -20,7 +21,7 @@
 
   <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
     <% @shops.each.with_index do |shop, i| %>
-      <div class="border rounded border-dark p-2 my-2 h4">
+      <div class="border rounded border-dark bg-white p-2 my-2 h4">
 
         <p class="mb-3"><a href=<%= shop.site_url%> target="_blank"><%= shop.name %></a></p>
         <% if user_signed_in? %>
@@ -43,6 +44,7 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
 
 <style>

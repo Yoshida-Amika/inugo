@@ -1,45 +1,51 @@
-<h1>お気に入り店一覧</h1>
-
-<div class="d-flex bd-highlight">
-
-  <div class="p-2 flex-fill bd-highlight">
-    <!--マップ表示-->
-    <div class="border border-bark ">
-      <div id='map'></div>
+<div class="ets-background">
+  <div class="d-flex justify-content-center">
+    <div class="bg-white">
+      <h1>お気に入り店一覧</h1>
     </div>
   </div>
 
-  <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
-    <% @revues.each do |revue| %>
-      <div class="border rounded border-dark p-2 my-2 h4">
-          <span class="border border-dark ">
-            <% revue.shop.genres.each do |genre| %>
-            <%= genre.name %>
-          </span>
-          <% end %>
-          <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
-          <% if user_signed_in? %>
-              <% if current_user.already_revued?(revue.shop) %>
-            　  <!--お気に入り-->
-                <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
-                  <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+  <div class="d-flex bd-highlight">
+  
+    <div class="p-2 flex-fill">
+      <!--マップ表示-->
+      <div class="border border-bark ">
+        <div id='map'></div>
+      </div>
+    </div>
+  
+    <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
+      <% @revues.each do |revue| %>
+        <div class="border rounded border-dark bg-white p-2 my-2 h4">
+            <span class="border border-dark ">
+              <% revue.shop.genres.each do |genre| %>
+              <%= genre.name %>
+            </span>
+            <% end %>
+            <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
+            <% if user_signed_in? %>
+                <% if current_user.already_revued?(revue.shop) %>
+              　  <!--お気に入り-->
+                  <%= button_to shop_revues_path(revue.shop), method: :delete, style: "border: none; background: transparent"  do %>
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                <% end %>
+                <% else %>
+                  <!--お気に入り取り消し-->
+                  <%= button_to shop_revues_path(revue.shop), method: :post, style: "border: none; background: transparent" do %>
+                    <i class="fa-regular fa-star"></i>
+                <% end %>
               <% end %>
-              <% else %>
-                <!--お気に入り取り消し-->
-                <%= button_to shop_revues_path(revue.shop), method: :post, style: "border: none; background: transparent" do %>
-                  <i class="fa-regular fa-star"></i>
               <% end %>
-            <% end %>
-            <% end %>
-          </p>
-          <p>郵便番号：<%= revue.shop.postal_code %></p>
-          <p>住所： <%= revue.shop.address %></p>
-          <p>電話番号: <%= revue.shop.telephone_number %></p>
-
-            </div>
-            <% end %>
-
-</div>
+            </p>
+            <p>郵便番号：<%= revue.shop.postal_code %></p>
+            <p>住所： <%= revue.shop.address %></p>
+            <p>電話番号: <%= revue.shop.telephone_number %></p>
+  
+              </div>
+              <% end %>
+  
+    </div>
+  </div>
 </div>
 
 

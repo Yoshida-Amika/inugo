@@ -37,3 +37,55 @@
 nav.navbar{
     height: 130px;
 }
+
+
+// 宿泊施設背景
+.accommodation-background{
+     background-color: #fff;
+     background-image:
+     radial-gradient(#007bff 20%, transparent 20%),
+     radial-gradient(#007bff 20%, transparent 20%);
+     background-size: 50px 50px;
+     background-position: 0 0, 30px 30px;
+
+}
+
+// ショッピングモール背景
+.shoppong-background{
+    background-color: #fff;
+    background-image:
+    radial-gradient(#ffc107 20%, transparent 20%),
+    radial-gradient(#ffc107 20%, transparent 20%);
+    background-size: 50px 50px;
+    background-position: 0 0, 30px 30px;
+}
+
+// アクティビティ背景
+.activity-background{
+    background-color: #fff;
+    background-image:
+    radial-gradient(#28a745 20%, transparent 20%),
+    radial-gradient(#28a745 20%, transparent 20%);
+    background-size: 50px 50px;
+    background-position: 0 0, 30px 30px;
+}
+
+// マイページ背景
+.mypage-background{
+    background-color: #fff;
+    background-image:
+    radial-gradient(#17a2b8 20%, transparent 20%),
+    radial-gradient(#17a2b8 20%, transparent 20%);
+    background-size: 50px 50px;
+    background-position: 0 0, 30px 30px;
+}
+
+// その他背景
+.ets-background{
+    background-color: #fff;
+    background-image:
+    radial-gradient(#6c757d 20%, transparent 20%),
+    radial-gradient(#6c757d 20%, transparent 20%);
+    background-size: 50px 50px;
+    background-position: 0 0, 30px 30px;
+}

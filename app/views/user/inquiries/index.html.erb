@@ -1,19 +1,21 @@
-<div class = "border border-dark col-md-5 col-sm-10 mx-2 mx-sm-auto text-center rounded px-0 my-5">
-<h2>問い合わせ</h2>
+<div class="ets-background">
+  <div class = "border border-dark bg-white col-md-5 mx-sm-auto text-center my-5">
+  <h2>問い合わせ</h2>
 
-<h3>お店の情報や機能の要望等の</h3>
-<h3>ご連絡お待ちしております。</h3>
-<h5>※100%反映されるわけではありません。</h5>
+  <h3>お店の情報や機能の要望等の</h3>
+  <h3>ご連絡お待ちしております。</h3>
+  <h5>※100%反映されるわけではありません。</h5>
 
-<%= form_with model: @inquiry, url: inquiries_path do |f| %>
+  <%= form_with model: @inquiry, url: inquiries_path do |f| %>
 
-<label for="inputName" class="col-sm-2 h3">ご意見</label>
-<br><%= f.text_area :opinion, class: 'form-control',size: "20x10" %>
+  <label for="inputName" class="col-sm-2 h3">ご意見</label>
+  <br><%= f.text_area :opinion, class: 'form-control',size: "20x10" %>
 
-<%= f.hidden_field :inquiry, value: @inquiry %>
+  <%= f.hidden_field :inquiry, value: @inquiry %>
 
 
-<br><%= f.submit '送信', class:"btn btn-success" %>
+  <br><%= f.submit '送信', class:"btn btn-success" %>
 
-<% end %>
+  <% end %>
+  </div>
 </div>
