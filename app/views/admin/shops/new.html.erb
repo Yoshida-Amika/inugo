@@ -5,11 +5,11 @@
 
 <h3>ジャンル選択</h3>
 <h4>
-  <!--ジャンルボタン（複数選択可）-->
-<%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-<% end %>
-<!---->
+    <!--ジャンルボタン（複数選択可）-->
+  <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+  <% end %>
+  <!---->
 </h4>
 
 <p><label for="inputName" class="col-sm-2">店名</label>
