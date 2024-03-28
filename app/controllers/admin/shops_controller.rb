@@ -6,17 +6,24 @@ end
 
 def create
     @shop = Shop.new(shop_params)
-    target_genre = @shop.genres.first
-    @shop.save
-    if target_genre.name == "宿泊施設"
-      redirect_to admin_shops_accommodation_path
-    elsif target_genre.name == "ショッピングモール"
-      redirect_to admin_shops_shopping_mall_path
-    elsif target_genre.name == "アクティビティ"
-      redirect_to admin_shops_activity_path
+
+
+    if @shop.save
+       target_genre = @shop.genres.first
+
+      if target_genre.name == "宿泊施設"
+        redirect_to admin_shops_accommodation_path
+      elsif target_genre.name == "ショッピングモール"
+        redirect_to admin_shops_shopping_mall_path
+      elsif target_genre.name == "アクティビティ"
+        redirect_to admin_shops_activity_path
+      else
+        redirect_to root_path
+      end
     else
-      redirect_to root_path
+      render :new
     end
+
 end
 
 def update

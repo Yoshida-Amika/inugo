@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        blank: 入力してください
+    attributes:
+      shop:
+        genres: ジャンル
+  errors:
+    attributes:
+      genres:
+        blank: 選択してください
