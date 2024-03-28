@@ -1,29 +1,34 @@
-<h1>お店編集</h1>
+<div class = "border border-dark col-md-5 col-10 mx-2 mx-sm-auto text-center rounded px-1 my-5">
+  <h1>お店編集</h1>
 
-<%= form_with model: @shop, url: admin_shop_path(@shop.id), method: :patch do |f| %>
+  <%= form_with model: @shop, url: admin_shop_path(@shop.id), method: :patch do |f| %>
 
-<h3>ジャンル選択</h3>
-<h4>
-  <!--ジャンルボタン（複数選択可）-->
-<%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
-<% end %>
-<!---->
-</h4>
+  <h3>ジャンル選択</h3>
+  <h4>
+    <!--ジャンルボタン（複数選択可）-->
+    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
+          <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <!---->
+  </h4>
 
-  <h3>名前</h3>
-    <%= f.text_field :name %>
-  <h3>お店のURL</h3>
-    <%= f.text_area :site_url %>
-  <h3>郵便番号</h3>
-    <%= f.text_field :postal_code %>
-  <h3>住所</h3>
-  <%= f.text_area :address %>
-  <h3>電話番号</h3>
-    <%= f.text_field :telephone_number %>
+    <h3>店名</h3>
+      <%= f.text_field :name, :size=>"60" %>
+    <h3>お店のURL</h3>
+      <%= f.text_area :site_url, :size=>"60"%>
+    <h3>郵便番号</h3>
+      <%= f.text_field :postal_code %>
+    <h3>住所</h3>
+    <%= f.text_area :address, :size=>"60" %>
+    <h3>電話番号</h3>
+      <%= f.text_field :telephone_number %>
 
-  <p><%= f.submit '保存' %></p>
+    <p>
+      <div class="mt-1">
+        <%= f.submit "保存", class: "btn btn-sm btn-primary button" %>
+        <%= link_to "削除", admin_shop_path(@shop.id), method: :delete, class: "btn btn-sm btn-danger button", "data-confirm" => "消しますか？" %>
+      </div>
+    </p>
 
-  <p><%= link_to "削除", admin_shop_path(@shop.id), method: :delete, "data-confirm" => "消しますか？" %></p>
-
-<% end %>
+  <% end %>
+</div>

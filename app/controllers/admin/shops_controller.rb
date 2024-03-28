@@ -43,11 +43,6 @@ def update
     end
 end
 
-
-
-def show
-end
-
 def edit
   @shop = Shop.find(params[:id])
 end

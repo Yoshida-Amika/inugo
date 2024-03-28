@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center">
   <div class="mx-5">
-    <h2>アクティビティ</h2>
+    <h1>アクティビティ</h1>
   </div>
-<h3><%= link_to "追加", new_admin_shop_path %></h3>
+<h2><%= link_to "追加", new_admin_shop_path %></h2>
 
 </div>
 
@@ -40,9 +40,6 @@
           <p class="mb-0">直線距離:<span id="shop-<%= i %>"></span>km</p>
           <%= link_to edit_admin_shop_path(shop), class: "btn btn-sm btn-success" do %>
             <h3>編集</h3>
-          <% end %>
-          <%= link_to admin_shop_path(shop), method: :delete, class: "btn btn-sm btn-danger ", "data-confirm" => "本当に消しますか？" do %>
-            <h3>削除</h3>
           <% end %>
       </div>
     <% end %>
