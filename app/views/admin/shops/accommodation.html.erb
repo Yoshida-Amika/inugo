@@ -38,6 +38,12 @@
           <p>住所: <%= shop.address %></p>
           <p>電話番号: <%= shop.telephone_number %></p>
           <p class="mb-0">直線距離:<span id="shop-<%= i %>"></span>km</p>
+          <%= link_to edit_admin_shop_path(shop), class: "btn btn-sm btn-success" do %>
+            <h3>編集</h3>
+          <% end %>
+          <%= link_to admin_shop_path(shop), method: :delete, class: "btn btn-sm btn-danger ", "data-confirm" => "本当に消しますか？" do %>
+            <h3>削除</h3>
+          <% end %>
       </div>
     <% end %>
   </div>

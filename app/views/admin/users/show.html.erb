@@ -49,7 +49,7 @@
               <%= tweet.sub_sentence %>
             </div>
             <h6><%= tweet.created_at.strftime('%Y/%m/%d') %></h6>
-            <%= link_to "削除", admin_sohp_path(tweet), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？" %>
+            <%= link_to "削除", admin_shop_path(tweet), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？" %>
           </p>
           </div>
         <% end %>
