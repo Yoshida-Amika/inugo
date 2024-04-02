@@ -64,6 +64,7 @@ function initMap(){
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     center: {lat: 35.171075437602035, lng:136.88147969620726},
+
   });
 
   var marker = new google.maps.Marker({
@@ -91,14 +92,17 @@ function initMap(){
         var result_distance = calc_distance({lat: marker_lat, lng: marker_lng},markers[i]);
         console.log(result_distance);
         document.getElementById("shop-"+i).innerHTML = result_distance;
+
       }
 
   });
 
+
+// 現在地のピン
   marker.setOptions({
     icon: {
-    　url: '/img/map_icon.png',
-    　scaledSize: new google.maps.Size(40, 50)
+    　url: '/img/my_icon.png',
+    　scaledSize: new google.maps.Size(40, 60)
     }
   });
 
@@ -145,6 +149,7 @@ function haversine_distance(mk1, mk2) {
       return +parseFloat(d).toFixed(2);
   }
 
+// km表示
 function calc_distance(base, target){
   let km = 0;
   console.log(base.lat);
