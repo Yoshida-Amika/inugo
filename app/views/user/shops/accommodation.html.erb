@@ -114,8 +114,11 @@ function initMap(){
 
       var marker = new google.maps.Marker({
           position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
+          icon: '/img/accommodation_icon.png',
+          size: new google.maps.Size(71, 71),
           map: map,
           title: contentString
+
       });
 
       })();
