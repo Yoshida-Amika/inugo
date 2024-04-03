@@ -1,48 +1,49 @@
-
-<div class="d-flex justify-content-center">
-  <div class="bg-white">
-    <h1>いいね一覧</h1>
+<div class="mypage-background">
+  <div class="d-flex justify-content-center">
+    <div class="bg-white">
+      <h1>いいね一覧</h1>
+    </div>
   </div>
-</div>
-
-<div class="d-flex justify-content-center">
-  <div class="bd-highlight overflow-y-auto overflow-x-hidden" style="height:730px;">
-    <div class="row">
-      <div class="card-deck" style="justify-content: center; width: 1200px;">
-        <% @nices.each_with_index do |nice,index| %>
-        <div class ="col-3">
-          <div class="card mb-3">
-            <h3><%= link_to nice.tweet.user.nickname, other_path(nice.tweet.user) %></h3>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">
-                <%= nice.tweet.sub_sentence %>
-              </h5>
-              <%= image_tag nice.tweet.get_image(200,200) %>
-              <% if current_user.already_niced?(nice.tweet) %>
-      　         <!--いいねの取り外し-->
-                <%= button_to tweet_nices_path(nice.tweet), method: :delete, style: "border: none; background: transparent"  do %>
-                  <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
+  
+  <div class="d-flex justify-content-center">
+    <div class="bd-highlight overflow-y-auto overflow-x-hidden" style="height:730px;">
+      <div class="row">
+        <div class="card-deck" style="justify-content: center; width: 1200px;">
+          <% @nices.each_with_index do |nice,index| %>
+          <div class ="col-3">
+            <div class="card mb-3">
+              <h3><%= link_to nice.tweet.user.nickname, other_path(nice.tweet.user) %></h3>
+              <div class="card-body">
+                <h5 class="card-title font-weight-bold">
+                  <%= nice.tweet.sub_sentence %>
+                </h5>
+                <%= image_tag nice.tweet.get_image(200,200) %>
+                <% if current_user.already_niced?(nice.tweet) %>
+        　         <!--いいねの取り外し-->
+                  <%= button_to tweet_nices_path(nice.tweet), method: :delete, style: "border: none; background: transparent"  do %>
+                    <i class="fa-solid fa-heart" style="color: #ff0026;"></i>
+                  <% end %>
+                <% else %>
+                <!--いいね-->
+                  <%= button_to tweet_nices_path(nice.tweet), method: :post, style: "border: none; background: transparent" do %>
+                    <i class="fa-regular fa-heart" style="color: #808080;"></i>
+                  <% end %>
                 <% end %>
-              <% else %>
-              <!--いいね-->
-                <%= button_to tweet_nices_path(nice.tweet), method: :post, style: "border: none; background: transparent" do %>
-                  <i class="fa-regular fa-heart" style="color: #808080;"></i>
-                <% end %>
-              <% end %>
-              <%= nice.tweet.nices.count %>
+                <%= nice.tweet.nices.count %>
+              </div>
+  
+              <div class="card-footer">
+                <small class="text-muted">
+                  <%= nice.tweet.created_at.strftime('%Y/%m/%d') %>
+                </small>
+              </div>
+  
             </div>
-
-            <div class="card-footer">
-              <small class="text-muted">
-                <%= nice.tweet.created_at.strftime('%Y/%m/%d') %>
-              </small>
-            </div>
-
           </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
-</div>
+  </div>
 </div>
