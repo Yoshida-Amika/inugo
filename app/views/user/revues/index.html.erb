@@ -6,22 +6,24 @@
   </div>
 
   <div class="d-flex bd-highlight">
-  
+
     <div class="p-2 flex-fill">
       <!--マップ表示-->
       <div class="border border-bark ">
         <div id='map'></div>
       </div>
+      <span id="lat"></span>
     </div>
-  
+
     <div class="container mt-3 overflow-auto  flex-fill bd-highlight"style="height:700px;">
-      <% @revues.each do |revue| %>
+      <% @revues.each.with_index do |revue, i| %>
         <div class="border rounded border-dark bg-white p-2 my-2 h4">
             <span class="border border-dark ">
               <% revue.shop.genres.each do |genre| %>
-              <%= genre.name %>
+                <%= genre.name %>
+              <% end %>
             </span>
-            <% end %>
+
             <p class="mb-3"><a href=<%= revue.shop.site_url%> target="_blank"><%= revue.shop.name %></a>
             <% if user_signed_in? %>
                 <% if current_user.already_revued?(revue.shop) %>
@@ -40,10 +42,10 @@
             <p>郵便番号：<%= revue.shop.postal_code %></p>
             <p>住所： <%= revue.shop.address %></p>
             <p>電話番号: <%= revue.shop.telephone_number %></p>
-  
+            <p class="mb-0">直線距離:<span id="shop-<%= i %>"></span>km</p>
               </div>
               <% end %>
-  
+
     </div>
   </div>
 
@@ -68,10 +70,48 @@ function initMap(){
     center: {lat: 35.171075437602035, lng:136.88147969620726},
   });
 
+  var marker = new google.maps.Marker({
+    position: {lat: 35.171075437602035, lng:136.88147969620726},
+    map: map,
+    draggable: true,
+    title: "初期位置"
+  });
+
+  //マーカーのドロップ（ドラッグ終了）時のイベント
+  var marker_lat = 0;
+  var marker_lng = 0;
+  var markers = new Array();
+
+  google.maps.event.addListener(marker, 'dragend', function(e) {
+      //イベントの引数eの、プロパティ.latLngがmarkerの緯度経度。
+       document.getElementById("lat").innerHTML = 'マーカーの緯度' + e.latLng.lat();
+      // $('#lng').text('マーカーの経度' + e.latLng.lng());
+      console.log('マーカーの緯度' + e.latLng.lat());
+      console.log('マーカーの経度' + e.latLng.lng());
+      marker_lat = e.latLng.lat();
+      marker_lng = e.latLng.lng();
+      console.log(markers);
+      for( var i = 0; i < markers.length; i++ ){
+        var result_distance = calc_distance({lat: marker_lat, lng: marker_lng},markers[i]);
+        console.log(result_distance);
+        document.getElementById("shop-"+i).innerHTML = result_distance;
+      }
+
+  });
+
+  // 現在地のピン
+  marker.setOptions({
+    icon: {
+    　url: '/img/my_icon.png',
+    　scaledSize: new google.maps.Size(50, 70)
+    }
+  });
+
  <% @revues.each do |revue| %>
     <% if revue.shop.lat && revue.shop.lon %>
     (function(){
       var contentString = "<%= revue.shop.name %> 住所：<%= revue.shop.address %>";
+      markers.push({lat: <%= revue.shop.lat %>, lng: <%= revue.shop.lon %>});
 
           var marker = new google.maps.Marker({
               position:{lat: <%= revue.shop.lat %>, lng: <%= revue.shop.lon %>},
@@ -82,6 +122,43 @@ function initMap(){
           })();
     <% end %>
   <% end %>
+
+  marker_lat = 35.171075437602035;
+      marker_lng = 136.88147969620726;
+      for( var i = 0; i < markers.length; i++ ){
+        var result_distance = calc_distance({lat: marker_lat, lng: marker_lng},markers[i]);
+        document.getElementById("shop-"+i).innerHTML = result_distance;
+      }
+}
+
+function haversine_distance(mk1, mk2) {
+      var R = 6371.0710; // km表示
+      var rlat1 = mk1.lat * (Math.PI/180);
+       // Convert degrees to radians
+      var rlat2 = mk2.lat * (Math.PI/180);
+       // Convert degrees to radians
+      var difflat = rlat2-rlat1; // Radian difference (latitudes)
+      var difflon = (mk2.lng-mk1.lng)
+                  * (Math.PI/180); // Radian difference (longitudes)
+
+      var d = 2 * R
+      * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)
+      +Math.cos(rlat1)*Math.cos(rlat2)
+      *Math.sin(difflon/2)*Math.sin(difflon/2)));
+      return +parseFloat(d).toFixed(2);
+  }
+
+function calc_distance(base, target){
+  let km = 0;
+  console.log(base.lat);
+  console.log(base.lng);
+
+  console.log(target.lat);
+  console.log(target.lng);
+
+  km = haversine_distance(base, target)
+
+  return km;
 }
 
 var geocoder

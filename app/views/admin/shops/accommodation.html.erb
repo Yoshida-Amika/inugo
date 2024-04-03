@@ -96,7 +96,7 @@ function initMap(){
   marker.setOptions({
     icon: {
     　url: '/img/my_icon.png',
-    　scaledSize: new google.maps.Size(40, 60)
+    　scaledSize: new google.maps.Size(50, 70)
     }
   });
 
@@ -108,6 +108,10 @@ function initMap(){
 
       var marker = new google.maps.Marker({
           position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
+          icon: {
+            url: '/img/accommodation_icon.png',
+            scaledSize: new google.maps.Size(40, 50),
+          },
           map: map,
           title: contentString
       });
