@@ -1,3 +1,4 @@
+<% if admin_signed_in? %>
 <div class="d-flex justify-content-center">
   <div class="mx-5">
     <h1>ショッピングモール</h1>
@@ -52,6 +53,13 @@
     width: 1000px;
   }
 </style>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <div class="mx-5">
+      <h2>このページは表示できません</h2>
+    </div>
+  </div>
+<% end %>
 
 <script>
 let map
@@ -187,6 +195,8 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOhgWbMy8MLeF0mPpDoTHzaCzf14btmt4&callback=initMap" async defer></script>
 <!---->
+
+
 
 
 

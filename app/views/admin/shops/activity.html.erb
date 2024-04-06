@@ -1,3 +1,4 @@
+<% if admin_signed_in? %>
 <div class="d-flex justify-content-center">
   <div class="mx-5">
     <h1>アクティビティ</h1>
@@ -52,6 +53,13 @@
     width: 1000px;
   }
 </style>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <div class="mx-5">
+      <h2>このページは表示できません</h2>
+    </div>
+  </div>
+<% end %>
 
 <script>
 let map

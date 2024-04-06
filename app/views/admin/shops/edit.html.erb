@@ -1,3 +1,4 @@
+<% if admin_signed_in? %>
 <div class = "border border-dark col-md-5 col-10 mx-2 mx-sm-auto text-center rounded px-1 my-5">
   <h1>お店編集</h1>
 
@@ -32,3 +33,10 @@
 
   <% end %>
 </div>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <div class="mx-5">
+      <h2>このページは表示できません</h2>
+    </div>
+  </div>
+<% end %>

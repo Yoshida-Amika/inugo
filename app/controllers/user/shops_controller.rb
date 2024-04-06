@@ -21,6 +21,4 @@ class User::ShopsController < ApplicationController
   def show
   end
 
-
-
 end

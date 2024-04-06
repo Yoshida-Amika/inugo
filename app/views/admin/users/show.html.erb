@@ -1,3 +1,4 @@
+<% if admin_signed_in? %>
 <div class="d-flex justify-content-center h1">
   <h1><%= @user.nickname %>さんのユーザー詳細</h1>
 </div>
@@ -56,4 +57,11 @@
       </div>
     </div>
 </div>
+<% else %>
+  <div class="d-flex justify-content-center">
+    <div class="mx-5">
+      <h2>このページは表示できません</h2>
+    </div>
+  </div>
+<% end %>
 
