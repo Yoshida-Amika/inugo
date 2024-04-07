@@ -24,7 +24,7 @@ end
 private
 
   def users_params
-    params.require(:user).permit(:nickname, :email)
+    params.require(:user).permit(:nickname, :email, :testimonials)
   end
 
   def tweet_params
