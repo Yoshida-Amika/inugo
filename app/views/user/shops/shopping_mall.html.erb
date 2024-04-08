@@ -111,6 +111,10 @@ function initMap(){
 
       var marker = new google.maps.Marker({
           position:{lat: <%= shop.lat %>, lng: <%= shop.lon %>},
+          icon: {
+            url: '/img/shopping_mall_icon.png',
+            scaledSize: new google.maps.Size(40, 50),
+          },
           map: map,
           title: contentString
       });
