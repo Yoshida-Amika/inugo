@@ -11,3 +11,10 @@ ja:
     attributes:
       genres:
         blank: 選択してください
+
+
+ja:
+  activerecord:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"
