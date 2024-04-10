@@ -1,20 +1,24 @@
-# 追加ボタンのエラー警告
+#新規登録とジャンル追加（管理者）エラー警告
 ja:
   activerecord:
     errors:
       messages:
-        blank: 入力してください
+        blank: を入力してください
+        confirmation: を確認してください
     attributes:
       shop:
         genres: ジャンル
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認用
   errors:
     attributes:
       genres:
         blank: 選択してください
-
-
-ja:
-  activerecord:
-  errors:
     messages:
       record_invalid: "バリデーションに失敗しました: %{errors}"
+      not_saved: 登録できません。
+
+

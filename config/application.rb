@@ -22,3 +22,5 @@ module Inugo
     config.i18n.default_locale = :ja
   end
 end
+
+
